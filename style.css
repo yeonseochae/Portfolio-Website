@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: 'MyFont3';
-  src: url('fonts/ABC\ Monument-Grotesk/ABCMonumentGrotesk-Heavy-Trial.otf') format('opentype');
+  src: url('fonts/ABC Monument-Grotesk/ABCMonumentGrotesk-Heavy-Trial.otf') format('opentype');
 }
 
 /* ---------------------- GLOBAL ---------------------- */
@@ -28,14 +28,13 @@ body {
   position: fixed;
   width: 22px;
   height: 22px;
-  opacity: 92%;
+  opacity: 0.92;
   pointer-events: none;
   transform: translate(-50%, -50%);
   z-index: 9999;
 }
 
 /* ---------------------- LAYOUT COLUMNS ---------------------- */
-
 .column {
   height: 100%;
   padding: 2rem;
@@ -46,35 +45,33 @@ body {
 .column::-webkit-scrollbar {
   display: none;
 }
-.column { scrollbar-width: none; -ms-overflow-style: none; }
 
-/* Specific column sizes */
+/* Column sizes */
 .first  { flex: 2; padding: 57px 32px 0px 32px; overflow: hidden; }
-.second { flex: 2; padding: 17px 7px 7px 7px;}
-.third  { flex: 3.2; padding: 20px 20px 20px 20px; overflow: hidden; order: 4;}
-.fourth { flex: 6.3; padding: 16px 15px;  order: 3;}
+.second { flex: 2; padding: 17px 7px; display: none; flex-direction: column; align-items: center; gap: 20px; }
+.third  { flex: 3.2; padding: 20px; overflow: hidden; order: 4; }
+.fourth { flex: 6.3; padding: 16px 15px; order: 3; }
 
-/* ---------------------- TEXT STYLES ---------------------- */
+/* ---------------------- FIRST COLUMN ---------------------- */
 .myname {
   font-size: 26px;
-  margin-top: 5px;
   font-family: 'MyFont';
+  margin-top: 5px;
 }
 
 .information {
   margin-top: 20px;
   font-size: 16px;
   line-height: 15px;
-
 }
-.information p:hover{
-  /* text-decoration: underline; */
-      -webkit-text-stroke: 1px ; /* default no stroke */
+
+.information p:hover {
+  -webkit-text-stroke: 1px;
   font-size: 16px;
-      transition: all 0.35s ease; /* smooth animation */
+  transition: all 0.35s ease;
   cursor: none;
-
 }
+
 .first-information {
   height: 140px;
   margin: 0;
@@ -89,11 +86,9 @@ body {
 .first-content {
   display: flex;
   flex-direction: column;
-  padding: 20px 0px 0px 0px;
+  padding: 20px 0 0 0;
   line-height: 1;
   gap: 3.5px;
-    cursor: none;
-
 }
 
 .first-content p {
@@ -106,47 +101,26 @@ body {
 }
 
 .first-content p:hover {
+  font-family: 'MyFont3';
   font-size: 13px;
-  font-family: "MyFont3";
 }
 
-/* ---------------------- SECOND COLUMN (IMAGES) ---------------------- */
-.column.second {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  height: 100vh;
-  width: 100%;
-}
-
-#doors{
-  margin-bottom: 0px;
-}
-.column.second img:hover {
-  filter: grayscale(0%);
-  transform: scale(1.02);
-}
+/* ---------------------- SECOND COLUMN (TEXT MENU) ---------------------- */
 .menu-item {
-  font-size: 19px;       /* default size */
-  font-family: 'MyFont'; /* normal weight */
-  cursor: pointer;
-  transition: all 0.35s ease; /* smooth animation */
+  font-size: 19px;
+  font-family: 'MyFont';
   line-height: 1.1;
-    -webkit-text-stroke: 0px transparent; /* default no stroke */
   cursor: none;
-
+  transition: all 0.35s ease;
+  -webkit-text-stroke: 0px transparent;
 }
 
-/* Hover effect */
 .menu-item:hover {
-  font-size: 19px;         /* slightly larger */
-  transform: translateX(2px); /* optional slight slide effect */
-    -webkit-text-stroke: 1px black;    /* thin stroke to look bolder */
-
+  transform: translateX(2px);
+  -webkit-text-stroke: 1px black;
 }
-/* ---------------------- THIRD COLUMN ---------------------- */
 
+/* ---------------------- THIRD COLUMN (DESCRIPTIONS) ---------------------- */
 .column.third h2 {
   margin-bottom: 7px;
   font-size: 22px;
@@ -166,7 +140,15 @@ body {
   display: block;
 }
 
-/* ---------------------- FOURTH COLUMN ---------------------- */
+/* Ensure images inside descriptions (if added later) scale */
+.column.third img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 15px;
+}
+
+/* ---------------------- FOURTH COLUMN (PROJECTS) ---------------------- */
 .column.fourth h2 {
   position: sticky;
   top: 0;
@@ -181,7 +163,6 @@ body {
   font-size: 17px;
 }
 
-/* ---------------------- PROJECT LAYOUT ---------------------- */
 .project {
   display: none;
   width: 100%;
@@ -194,32 +175,29 @@ body {
   margin-top: 0;
 }
 
-
+/* ---------------------- PROJECT IMAGES & VIDEOS ---------------------- */
+.project img,
 .project-video {
-  width: 100%;
+  max-width: 100%;
   height: auto;
   display: block;
-  margin-bottom: 20px;
+  margin: 0 auto 20px;
   object-fit: cover;
 }
-#proj5 .project-video2 {
-  width: 480px;   /* change this to whatever size you want */
-  height: auto;
-  display: block;
-  margin: 0 auto;    /* this centers it */
-}
-#proj6 img {
-  width: 400px;
-  height: auto;
-  display: block;
-    margin: 0 auto;    /* this centers it */
 
-}
-.project-single {
-  width: 100%;
+#proj5 .project-video2 {
+  width: 480px;
+  height: auto;
   display: block;
-  margin-top: 20px;
-  border-radius: 8px;
+  margin: 0 auto;
+}
+
+#proj6 img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 /* ---------------------- PROJECT ROWS ---------------------- */
@@ -227,51 +205,38 @@ body {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 0px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
 }
 
 .project-row img {
-  width: calc((100% - 30px) / 4);
+  width: 100%;
+  max-width: calc((100% - 30px)/4);
+  height: auto;
   object-fit: cover;
 }
 
-/* Two-column override */
 .project-row.two-col img {
-  width: calc((100% - 10px) / 2);
+  width: 100%;
+  max-width: calc((100% - 10px)/2);
 }
 
 /* ---------------------- SPECIAL ELEMENTS ---------------------- */
-#dert1 {
-  width: 500px;
-}
-
-#HELlogo {
-  width: 100%;
-  margin: 25px 0 20px 0;
-}
-
-#HELsigns {
-  margin-bottom: 20px;
-}
+#HELlogo { width: 100%; margin: 25px 0 20px 0; }
+#HELsigns { margin-bottom: 20px; }
+#doors { margin-bottom: 20px; }
 
 .corner-gif {
   position: fixed;
   top: 30px;
   left: 33px;
   width: 55px;
-  pointer-events: none;
   z-index: 1000;
+  pointer-events: auto;
   cursor: pointer;
-  pointer-events: auto; /* allow clicks */
-
 }
 
-.name {
-  margin-top: 25px;
-  font-size: 26px;
-}
-
-/* Launch site tooltip */
+/* ---------------------- LAUNCH SITE TOOLTIP ---------------------- */
 .launch-site {
   position: relative;
   font-family: 'MyFont2';
@@ -294,18 +259,8 @@ body {
 .launch-site:hover::after {
   opacity: 1;
 }
-/* LIGHT MODE (default) */
-.light-mode .column {
-  background-color: white !important;
-  color: black !important;
-}
 
-/* DARK MODE */
-.dark-mode .column {
-  background-color: black !important;
-  color: white !important;
-}
-/* Dark mode */
-body.dark-mode .first-content p {
-  color: white;
-}
+/* ---------------------- LIGHT & DARK MODE ---------------------- */
+.light-mode .column { background-color: white !important; color: black !important; }
+.dark-mode .column { background-color: black !important; color: white !important; }
+body.dark-mode .first-content p { color: white; }
