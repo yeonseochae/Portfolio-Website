@@ -1,0 +1,302 @@
+/* ---------------------- FONTS ---------------------- */
+@font-face {
+  font-family: 'MyFont';
+  src: url('fonts/ABC Monument-Grotesk/ABCMonumentGrotesk-Regular-Trial.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'MyFont2';
+  src: url('fonts/ABC Monument-Grotesk/ABCMonumentGrotesk-Bold-Trial.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'MyFont3';
+  src: url('fonts/ABC\ Monument-Grotesk/ABCMonumentGrotesk-Heavy-Trial.otf') format('opentype');
+}
+
+/* ---------------------- GLOBAL ---------------------- */
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  overflow: hidden;
+  font-family: 'MyFont', sans-serif;
+  cursor: none;
+}
+
+#custom-cursor {
+  position: fixed;
+  width: 22px;
+  height: 22px;
+  opacity: 92%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+/* ---------------------- LAYOUT COLUMNS ---------------------- */
+
+.column {
+  height: 100%;
+  padding: 2rem;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.column::-webkit-scrollbar {
+  display: none;
+}
+.column { scrollbar-width: none; -ms-overflow-style: none; }
+
+/* Specific column sizes */
+.first  { flex: 2; padding: 57px 32px 0px 32px; overflow: hidden; }
+.second { flex: 2; padding: 17px 7px 7px 7px;}
+.third  { flex: 3.2; padding: 20px 20px 20px 20px; overflow: hidden; order: 4;}
+.fourth { flex: 6.3; padding: 16px 15px;  order: 3;}
+
+/* ---------------------- TEXT STYLES ---------------------- */
+.myname {
+  font-size: 26px;
+  margin-top: 5px;
+  font-family: 'MyFont';
+}
+
+.information {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 15px;
+
+}
+.information p:hover{
+  /* text-decoration: underline; */
+      -webkit-text-stroke: 1px ; /* default no stroke */
+  font-size: 16px;
+      transition: all 0.35s ease; /* smooth animation */
+  cursor: none;
+
+}
+.first-information {
+  height: 140px;
+  margin: 0;
+  padding: 16px 0 0 0;
+  line-height: 24px;
+}
+
+.first-information p {
+  margin: 7px 0;
+}
+
+.first-content {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0px 0px 0px;
+  line-height: 1;
+  gap: 3.5px;
+    cursor: none;
+
+}
+
+.first-content p {
+  margin: 0;
+  color: black;
+  font-size: 13px;
+  line-height: 14px;
+  font-family: 'MyFont2';
+  transition: 0.3s;
+}
+
+.first-content p:hover {
+  font-size: 13px;
+  font-family: "MyFont3";
+}
+
+/* ---------------------- SECOND COLUMN (IMAGES) ---------------------- */
+.column.second {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  height: 100vh;
+  width: 100%;
+}
+
+#doors{
+  margin-bottom: 0px;
+}
+.column.second img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.02);
+}
+.menu-item {
+  font-size: 19px;       /* default size */
+  font-family: 'MyFont'; /* normal weight */
+  cursor: pointer;
+  transition: all 0.35s ease; /* smooth animation */
+  line-height: 1.1;
+    -webkit-text-stroke: 0px transparent; /* default no stroke */
+  cursor: none;
+
+}
+
+/* Hover effect */
+.menu-item:hover {
+  font-size: 19px;         /* slightly larger */
+  transform: translateX(2px); /* optional slight slide effect */
+    -webkit-text-stroke: 1px black;    /* thin stroke to look bolder */
+
+}
+/* ---------------------- THIRD COLUMN ---------------------- */
+.column.third h2 {
+  margin-bottom: 7px;
+  font-size: 22px;
+  font-family: 'MyFont';
+}
+
+.column.third p {
+  font-size: 19px;
+  margin-top: 0;
+}
+
+.column.third .description {
+  display: none;
+}
+
+.column.third .description.active {
+  display: block;
+}
+
+/* ---------------------- FOURTH COLUMN ---------------------- */
+.column.fourth h2 {
+  position: sticky;
+  top: 0;
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-family: 'MyFont';
+  background: transparent;
+  z-index: 10;
+}
+
+.column.fourth p {
+  font-size: 17px;
+}
+
+/* ---------------------- PROJECT LAYOUT ---------------------- */
+.project {
+  display: none;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 60px 0 30px 0;
+}
+
+.project.active {
+  display: block;
+  margin-top: 0;
+}
+
+.project img,
+.project video,
+.project-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 20px;
+  object-fit: cover;
+}
+.project-video2 {
+  width: 500px;
+  height: auto;
+}
+.project-single {
+  width: 100%;
+  display: block;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+/* ---------------------- PROJECT ROWS ---------------------- */
+.project-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 0px;
+}
+
+.project-row img {
+  width: calc((100% - 30px) / 4);
+  object-fit: cover;
+}
+
+/* Two-column override */
+.project-row.two-col img {
+  width: calc((100% - 10px) / 2);
+}
+
+/* ---------------------- SPECIAL ELEMENTS ---------------------- */
+#dert1 {
+  width: 500px;
+}
+
+#HELlogo {
+  width: 100%;
+  margin: 25px 0 20px 0;
+}
+
+#HELsigns {
+  margin-bottom: 20px;
+}
+
+.corner-gif {
+  position: fixed;
+  top: 30px;
+  left: 33px;
+  width: 55px;
+  pointer-events: none;
+  z-index: 1000;
+  cursor: pointer;
+  pointer-events: auto; /* allow clicks */
+
+}
+
+.name {
+  margin-top: 25px;
+  font-size: 26px;
+}
+
+/* Launch site tooltip */
+.launch-site {
+  position: relative;
+  font-family: 'MyFont2';
+}
+
+.launch-site::after {
+  content: "(launch site)";
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  background: black;
+  color: white;
+  font-size: 11px;
+  opacity: 0;
+  padding: 4px 8px;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.launch-site:hover::after {
+  opacity: 1;
+}
+/* LIGHT MODE (default) */
+.light-mode .column {
+  background-color: white !important;
+  color: black !important;
+}
+
+/* DARK MODE */
+.dark-mode .column {
+  background-color: black !important;
+  color: white !important;
+}
+/* Dark mode */
+body.dark-mode .first-content p {
+  color: white;
+}
