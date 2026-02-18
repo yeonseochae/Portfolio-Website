@@ -49,7 +49,7 @@ body {
 /* Column sizes */
 .first  { flex: 2; padding: 57px 32px 0px 32px; overflow: hidden; }
 .second { flex: 2; padding: 17px 7px; display: none; flex-direction: column; align-items: center; gap: 20px; }
-.third  { flex: 3.2; padding: 20px; overflow: hidden; order: 4; }
+.third  { flex: 3.2; padding: 17px; overflow: hidden; order: 4; }
 .fourth { flex: 6.3; padding: 16px 15px; order: 3; }
 
 /* ---------------------- FIRST COLUMN ---------------------- */
@@ -107,7 +107,7 @@ body {
 
 /* ---------------------- SECOND COLUMN (TEXT MENU) ---------------------- */
 .menu-item {
-  font-size: 19px;
+  font-size: 17px;
   font-family: 'MyFont';
   line-height: 1.1;
   cursor: none;
@@ -160,7 +160,7 @@ body {
 }
 
 .column.fourth p {
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .project {
