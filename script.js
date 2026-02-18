@@ -26,7 +26,17 @@ document.querySelectorAll('.menu-item').forEach(item => {
     showProject(item.dataset.project);
   });
 });
+// Get references
+const workButton = document.querySelector('.first-information .information p:nth-child(3)'); // "Work"
+const secondColumn = document.querySelector('.column.second');
 
+// Hide second column by default (in case CSS fails)
+secondColumn.style.display = 'none';
+
+// Show second column when "Work" is clicked
+workButton.addEventListener('click', () => {
+  secondColumn.style.display = 'flex'; // flex to maintain your layout
+});
 // ---------------- THEME TOGGLE ----------------
 const themeToggle = document.getElementById("toggle");
 themeToggle.addEventListener("click", () => {
