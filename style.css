@@ -162,6 +162,30 @@ body {
 .column.fourth p {
   font-size: 15px;
 }
+#about-section p  {
+  font-size: 20px;        /* change this to whatever size you want */
+  font-family: 'MyFont'; /* optional: match your other content */
+  color: inherit;         /* inherits light/dark mode color */
+  margin-top: 10px;
+}
+#experience-section p {
+  font-size: 15px;        /* change this to whatever size you want */
+  line-height: 17px;
+  font-family: 'MyFont'; /* optional: match your other content */
+  margin: 3px;
+  color: inherit;         /* inherits light/dark mode color */
+}
+#about-section {
+  max-width: 520px;   /* control width here */
+  width: 100%;
+  margin: 0 auto;     /* center it */
+}
+#experience-section {
+  max-width: 520px;   /* control width here */
+  width: 100%;
+  margin: 0 auto;     /* center it */
+  margin-top: 10px;
+}
 
 .project {
   display: none;
