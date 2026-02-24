@@ -10,6 +10,10 @@
 
 <body class="light-mode">
 
+  <div id="imageModal" class="image-modal">
+  <img id="modalImg">
+</div>
+
   <!-- CUSTOM CURSOR -->
   <img src="./images/favicon2.png" alt="cursor" id="custom-cursor">
 
@@ -42,6 +46,7 @@
       <p class="menu-item" data-project="proj4">Helsinki Airport</p>
       <p class="menu-item" data-project="proj6">MPAA Rating System</p>
       <p class="menu-item" data-project="proj2">Doors</p>
+      <p class="menu-item" data-project="proj8">Journey to Space</p>
       <p class="menu-item" data-project="proj3">McDonald's <br> Happy  Meal Archive</p>
       <p class="menu-item" data-project="proj5">Fruits, Vegetables</p>
       <p class="menu-item" data-project="proj7">Riso Animations</p>
@@ -65,6 +70,13 @@
     <div class="description" id="desc-proj2">
       <h2>Doors</h2>
       <p>This project began by collecting images of doors across New York City, exploring the question: what lies behind each door? It grew to feature individuals who collect objects endlessly, reflecting how curiosity drives the act of collecting. The book incorporates a tactile experience: smaller page spreads camouflage within larger spreads, revealing themselves when flipped. Each flip evokes curiosity, inviting the audience to wonder about the people behind the doors.</p>
+    </div>
+
+     <div class="description" id="desc-proj8">
+      <h2>Journey to Space</h2>
+      <p>The work translates a curated list of space and lunar travelers into a structured typographic system. Key information — including name, nationality, affiliated team, crew size, and year of travel — is organized for clarity while maintaining visual engagement.
+        While the content is data-driven, floating, freeform letterforms evoke the gravity-free environment of space, allowing the visual language to reflect the subject matter.
+      </p>
     </div>
 
     <div class="description" id="desc-proj3">
@@ -117,7 +129,7 @@
 <!-- PROJECT IMAGES -->
 
     <div class="project" id="proj4">
-      <img id="HELlogo" src="images/HEL/HELlogo.png">
+      <img id="HELlogo" src="images/HEL/HELlogo.png" class="clickable-image">
       <video autoplay muted loop playsinline class="project-video">
         <source src="images/HEL/welcomeHEL-motion-finaldraft 2.mov" type="video/mp4">
       </video>
@@ -138,8 +150,18 @@
       <img src="images/doors/doors-layout.png">
     </div> 
 
-    <div class="project" id="proj3">
+ <div class="project" id="proj8">
+  <img src="images/sky map-mockup.jpg">
+  <img src="images/skymap-detail1.jpg">
+  <img src="images/skymap-detail2.jpg">
+  <img src="images/skymap-detail3.jpg">
+  <img src="images/skymap-detail4.jpg">
+  <img src="images/sky-map-1.jpg">
 
+     
+ </div>
+
+    <div class="project" id="proj3">
   <!-- Hyperlinked video -->
   <a href="https://yeonseochae.github.io/interaction-prj2-YeonseoChae/" target="_blank" class="launch-site">
     <video autoplay muted loop playsinline class="project-video">
