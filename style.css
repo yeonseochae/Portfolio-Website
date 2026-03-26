@@ -13,6 +13,9 @@
   font-family: 'MyFont3';
   src: url('fonts/ABC Monument-Grotesk/ABCMonumentGrotesk-Heavy-Trial.otf') format('opentype');
 }
+.body{
+  cursor:none;
+}
 /* Color wave animation */
 @keyframes emailColorWave {
   0%   { color: #fa5643; }
