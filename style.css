@@ -113,8 +113,8 @@ body {
 
 .information p:hover {
   -webkit-text-stroke: .7px;
-  font-size: 18px;
-  transition: all 0.45s ease;
+  font-size: 19px;
+  transition: all 0.35s ease;
   cursor: none;
 }
 
