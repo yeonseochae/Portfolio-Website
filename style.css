@@ -94,9 +94,9 @@ body {
 
 /* Column sizes */
 .first  { flex: 1.2; padding: 57px 25px 0px 25px; overflow: hidden; }
-.second { flex: 2.2; padding: 17px 7px; display: none; flex-direction: column; align-items: center; gap: 20px; }
+.second { flex: 1.7; padding: 10px 7px; display: none; flex-direction: column; align-items: center; gap: 20px; }
 .third  { flex: 2.8; padding: 17px; padding-right: 30px; overflow: hidden; order: 4; }
-.fourth { flex: 6.5; padding: 16px 15px; order: 3; }
+.fourth { flex: 6.5; padding: 16px 12px; order: 3; }
 
 /* ---------------------- FIRST COLUMN ---------------------- */
 .myname {
@@ -351,8 +351,48 @@ body {
 .launch-site:hover::after {
   opacity: 1;
 }
+.launch-link {
+  color: rgb(31, 31, 31);           /* text color */
+  text-decoration: none;     /* remove underline */
+  font-weight: 500;
+  position: relative;        /* needed for pseudo-element */
+  transition: color 0.3s;
+}
 
-/* ---------------------- LIGHT & DARK MODE ---------------------- */
-.light-mode .column { background-color: white !important; color: black !important; }
-.dark-mode .column { background-color: black !important; color: white !important; }
-body.dark-mode .first-content p { color: white; }
+/* Hover: underline animation */
+.launch-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;              /* slightly below text */
+  width: 0;
+  height: 2px;
+  background-color: #466eff;
+  transition: width 0.3s;
+}
+
+.launch-link:hover {
+  cursor: none;
+  color: #27f031;            /* slightly darker text on hover */
+}
+
+.launch-link:hover::after {
+  width: 100%;    
+}
+
+/* Light mode */
+.light-mode .column {
+  background-color: white !important;
+  color: black !important;
+}
+
+/* Dark mode */
+.dark-mode .column {
+  background-color: black !important;
+  color: white !important;
+}
+
+/* Dark mode for paragraphs in first content */
+body.dark-mode .first-content p {
+  color: white;
+}
