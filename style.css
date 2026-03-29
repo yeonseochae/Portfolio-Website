@@ -95,7 +95,7 @@ body {
 /* Column sizes */
 .first  { flex: 1.2; padding: 57px 25px 0px 25px; overflow: hidden; }
 .second { flex: 1.7; padding: 10px 7px; display: none; flex-direction: column; align-items: center; gap: 20px; }
-.third  { flex: 2.8; padding: 17px; padding-right: 30px; overflow: hidden; order: 4; }
+.third  { flex: 2.8; padding: 17px; padding-right: 30px; order: 4; }
 .fourth { flex: 6.5; padding: 16px 12px; order: 3; }
 
 /* ---------------------- FIRST COLUMN ---------------------- */
@@ -166,11 +166,24 @@ body {
 
 .menu-item:hover {
   transform: translateX(2px);
-  -webkit-text-stroke: 1px rgb(31, 31, 31);
+  font-family: 'MyFont2';
+
 }
 
+.menu-item.active {
+  font-family: 'MyFont2';
+}
+.menu-item:hover:not(.active) {
+  font-family: 'MyFont2';
+}
 /* ---------------------- THIRD COLUMN (DESCRIPTIONS) ---------------------- */
-
+.column.third {
+  height: 100vh;      /* makes column full screen height */
+  overflow-y: auto;   /* enables vertical scrolling */
+}
+.scroll-spacer {
+  height: 80px;
+}
 .column.third h2 {
   margin-bottom: 7px;
   font-size: 22px;
@@ -182,6 +195,8 @@ body {
   font-size: 19px;
   line-height: 24px;
   margin-top: 0;
+  margin-bottom: 20px;
+
 }
 
 .column.third .description {
@@ -367,13 +382,13 @@ body {
   bottom: -2px;              /* slightly below text */
   width: 0;
   height: 2px;
-  background-color: #466eff;
+  background-color: rgb(31, 31, 31);
   transition: width 0.3s;
 }
 
 .launch-link:hover {
   cursor: none;
-  color: #27f031;            /* slightly darker text on hover */
+  color: rgb(31, 31, 31);            /* slightly darker text on hover */
 }
 
 .launch-link:hover::after {

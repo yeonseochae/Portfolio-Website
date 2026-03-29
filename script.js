@@ -5,6 +5,11 @@ console.log("JS connected");
 // =============================
 const cursor = document.getElementById("custom-cursor");
 
+function getFirstProjectId() {
+  const firstMenuItem = document.querySelector(".menu-item");
+  return firstMenuItem ? firstMenuItem.dataset.project : null;
+}
+
 document.addEventListener("mousemove", (e) => {
   if (!cursor) return;
   cursor.style.left = e.clientX + "px";
@@ -63,12 +68,17 @@ function showProject(projectId, showSecondColumn = false) {
 // =============================
 document.querySelectorAll(".menu-item").forEach(item => {
   item.addEventListener("click", () => {
+
+    // remove bold from all items
+    document.querySelectorAll(".menu-item")
+      .forEach(i => i.classList.remove("active"));
+
+    // bold the clicked one
+    item.classList.add("active");
+
     const projectId = item.dataset.project;
 
-    // If not About/Experience, show second column
-    const isWorkProject = projectId && !projectId.includes("about") && !projectId.includes("experience");
-
-    showProject(projectId, true); // always show second column when clicking projects
+    showProject(projectId, true);
   });
 });
 
@@ -86,8 +96,10 @@ aboutButton.addEventListener("click", () => showProject("about-section", false))
 experienceButton.addEventListener("click", () => showProject("experience-section", false));
 
 // WORK
-workButton.addEventListener("click", () => showProject(null, true)); // show second column with all projects
-
+workButton.addEventListener("click", () => {
+  const firstProject = getFirstProjectId();
+  showProject(firstProject, true);
+});
 // =============================
 // THEME TOGGLE
 // =============================
