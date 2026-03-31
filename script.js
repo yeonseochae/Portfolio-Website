@@ -31,6 +31,7 @@ secondColumn.style.display = "none"; // hide menu initially
 // =============================
 // SHOW PROJECT / SECTIONS
 // =============================
+
 function showProject(projectId, showSecondColumn = false) {
 
   // Hide all projects

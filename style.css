@@ -155,7 +155,7 @@ body {
 /* ---------------------- SECOND COLUMN (TEXT MENU) ---------------------- */
 
 .menu-item {
-  font-size: 19px;
+  font-size: 18.5px;
   font-family: 'MyFont';
   line-height: 17px;
   cursor: none;
@@ -163,19 +163,19 @@ body {
   -webkit-text-stroke: 0px transparent;
   margin-top: 18.26px;
 }
-
-.menu-item:hover {
-  transform: translateX(2px);
-  font-family: 'MyFont2';
-
+.menu-item:hover{
+ -webkit-text-stroke: .7px;
+  font-size: 19px;
+  transition: all 0.35s ease;
+  cursor: none;
 }
+/* HOVER — same as information column */
 
+/* ACTIVE (clicked project) */
 .menu-item.active {
-  font-family: 'MyFont2';
+  font-family: 'MyFont2'; /* bold version stays selected */
 }
-.menu-item:hover:not(.active) {
-  font-family: 'MyFont2';
-}
+
 /* ---------------------- THIRD COLUMN (DESCRIPTIONS) ---------------------- */
 .column.third {
   height: 100vh;      /* makes column full screen height */
