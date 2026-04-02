@@ -61,8 +61,9 @@ function showProject(projectId, showSecondColumn = false) {
   secondColumn.style.display = showSecondColumn ? "flex" : "none";
 
   // ✅ Scroll page to top
-  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  window.scrollTo({ top: 0, left: 0, behavior: "instant" }); fourthColumn.scrollTop=0;
 }
+
 
 // =============================
 // MENU ITEMS (second column)
