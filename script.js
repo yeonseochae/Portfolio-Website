@@ -87,15 +87,21 @@ document.querySelectorAll(".menu-item").forEach(item => {
 // =============================
 // FIRST COLUMN BUTTONS
 // =============================
-const aboutButton = document.querySelector(".first-information .information p:nth-child(1)");
-const experienceButton = document.querySelector(".first-information .information p:nth-child(2)");
-const workButton = document.querySelector(".first-information .information p:nth-child(3)");
+const aboutButton = document.querySelector(".about-btn");
+const workButton = document.querySelector(".work-btn");
 
 // ABOUT
 aboutButton.addEventListener("click", () => showProject("about-section", false));
 
-// EXPERIENCE
-experienceButton.addEventListener("click", () => showProject("experience-section", false));
+// // EXPERIENCE
+// experienceButton.addEventListener("click", () => showProject("experience-section", false));
+
+const experienceLink = document.querySelector(".experience-link");
+
+experienceLink.addEventListener("click", (e) => {
+  e.preventDefault(); // stop page jump
+  showProject("experience-section", false);
+});
 
 // WORK
 workButton.addEventListener("click", () => {

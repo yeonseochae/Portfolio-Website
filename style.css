@@ -16,14 +16,30 @@
 .body{
   cursor:none;
 }
-/* Color wave animation */
-@keyframes emailColorWave {
-  0%   { color: #fa5643; }
-  25%  { color: #ffea8f; }
-  50%  { color: #4579e4; }
-  75%  { color: #57c287; }
-  100% { color: #fa5643; }
+.about.email {
+  font-size: 20px;
 }
+.about.linkedin {
+  font-size: 20px;
+}
+.about.experience-link{
+  font-size: 20px;
+}
+/* Email hover */
+.about.email:hover {
+  text-decoration: underline;
+  color: #ff3939; /* red-ish */
+}
+/* LinkedIn hover */
+.about.linkedin:hover {
+  text-decoration: underline;
+  color: #4165f9; /* LinkedIn blue */
+}
+.about.experience-link:hover {
+  text-decoration: underline;
+  color: #49e889; /* LinkedIn blue */
+}
+
 .back-home-icon {
   position: fixed;
   top: 13px;
@@ -242,6 +258,14 @@ body {
 
 .column.fourth p {
   font-size: 15px;
+}
+.about {
+  display: inline-block; /* important so margin works nicely */
+  margin-right: 12px;    /* space between items */
+  text-decoration: none;
+  color: rgb(31, 31, 31);
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+
 }
 #about-section p  {
   font-size: 20px;        /* change this to whatever size you want */
