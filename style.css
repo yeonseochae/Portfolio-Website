@@ -27,8 +27,8 @@
 }
 /* Email hover */
 .about.email:hover {
+  color: #ff3939;
   text-decoration: underline;
-  color: #ff3939; /* red-ish */
 }
 /* LinkedIn hover */
 .about.linkedin:hover {
@@ -260,12 +260,11 @@ body {
   font-size: 15px;
 }
 .about {
-  display: inline-block; /* important so margin works nicely */
-  margin-right: 12px;    /* space between items */
+  display: inline-block;
+  margin-right: 12px;
   text-decoration: none;
-  color: rgb(31, 31, 31);
+  color: inherit;
   transition: color 0.2s ease, text-decoration 0.2s ease;
-
 }
 #about-section p  {
   font-size: 20px;        /* change this to whatever size you want */
