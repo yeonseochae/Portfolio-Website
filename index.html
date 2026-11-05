@@ -1,326 +1,562 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yeonseo Chae</title>
-  <link rel="icon" type="image/png" href="images/favicon32.png">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="light-mode">
 
-
-  <!-- CUSTOM CURSOR -->
-  <img src="./images/favicon2.png" alt="cursor" id="custom-cursor">
-
-
-  <!-- COLUMN 1 -->
-  <div class="column first">
-    <div class="first-information">
-      <img src="images/Untitled-2.gif" class="corner-gif" id="toggle">
-      <p class="myname">Yeonseo Chae</p>
-
-      <div class="information">
-        <p class="about-btn">About</p>
-        <p class="work-btn">Work</p>
-        <!-- <p>Lukewarm Editions</p> -->
-      </div>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-left">
+      <button class="myname" type="button">Yeonseo Chae</button>
     </div>
+    <svg class="header-sun" viewBox="0 0 156.28 76.26" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M115.78,66.56c-.51-2.16-1.2-4.26-2.07-6.26l31.09-16.62-4.55-9.71-31.42,18.23c-1.99-2.51-4.3-4.75-6.87-6.67l22.64-29.58-7.33-6.14-23.22,31.17c-3.62-1.51-7.54-2.43-11.63-2.71l1.970-37.17-10.7-1.09,2.35,38.32c-3.69.38-7.22,1.3-10.51,2.68L37.83,7.33l-7.63,3.77,29.14,33.23c-3.77,2.51-7.03,5.7-9.65,9.39L13.47,31.1l-3.98,7.37,37.48,19.71c-1.34,2.59-2.36,5.35-3.06,8.25l-43.91,1.31v8.52l49.66-1.14h63.63l42.99,1.14v-7.63l-40.51-2.08Z"/>
+    </svg>
 
-    <!-- <div class="first-content">
-      <p>2026</p>
-      <p>2025</p>
-      <p>2024</p>
-      <p>2023</p>
-      <p>2022</p>
-    </div> -->
-  </div>
+    <nav class="site-nav">
+      <button id="toggle" class="theme-toggle" type="button"
+              role="switch" aria-checked="false" aria-label="Dark mode">
+        <span class="toggle-knob"></span>
+      </button>
+      <button class="nav-btn work-btn" type="button">Work</button>
+      <button class="nav-btn play-btn" type="button">Off-the-Clock</button>
+      <button class="nav-btn about-btn" type="button">About</button>
+    </nav>
+  </header>
 
-  <!-- COLUMN 2 (TEXT MENU) -->
-  <div class="column second">
-    <div class="menu">
-      <p class="menu-item" data-project="proj9">The A to Z Toolkit</p>
-      <p class="menu-item" data-project="proj6">MPAA Rating</p>
-      <p class="menu-item" data-project="proj4">Helsinki Airport</p>
-      <p class="menu-item" data-project="proj1">From (baby)<br>  to Art Student</p>
-      <p class="menu-item" data-project="proj2">Doors</p>
-      <p class="menu-item" data-project="proj8">Journey to Space</p>
-      <p class="menu-item" data-project="proj3">McDonald's <br> Happy  Meal Archive</p>
-      <p class="menu-item" data-project="proj7">Riso Animations</p>
+  <!-- PAGE CONTENT -->
+  <main class="layout">
 
-    </div>
-  </div>
-
-  <!-- COLUMN 3 (DESCRIPTIONS) -->
+  <!-- PROJECT DESCRIPTIONS
+       (hidden on the landing screen; a description appears
+       when a thumbnail is clicked) -->
   <div class="column third">
 
-<div class="description" id="desc-proj9">
-  <h2>The A to Z Toolkit</h2>
+    <div class="description" id="desc-proj9">
+      <h2>The A to Z Toolkit</h2>
 
-  <div class="project-keywords">
-    <span>Art Direction</span>
-    <span>Book Design</span>
-    <span>Film</span>
-  </div>
+      <div class="project-keywords">
+        <span>Art Direction</span>
+        <span>Book Design</span>
+        <span>Film</span>
+      </div>
 
-  <p>
-     As I wrap up my four years studying at art school, I wanted to explore and reflect on the experiences 
-     I gained during my undergraduate studies. These experiences felt unique because in art school, 
-     there is rarely one defined answer where people can judge whether something is right or wrong.
-  </p>
-         <img src="images/riso/AtoZ-Toolkit.gif">
-  <p>
-    This idea led to The A to Z Toolkit project, which reframes tools as open-ended materials rather 
-    than objects limited to their original functions. Tools are not markers of professionalism but are 
-    shaped by creative intention. Once a tool is in the hands of an artist, its meaning and use emerge 
-    through personal interpretation and experimentation.
-  </p>
-       <img src="images/AtoZ/props.gif">
+      <p>
+        As I wrap up my four years studying at art school, I wanted to
+        explore and reflect on the experiences I gained during my
+        undergraduate studies. These experiences felt unique because
+        in art school, there is rarely one defined answer where people
+        can judge whether something is right or wrong.
+      </p>
 
-  <p>
-    The A to Z Toolkit Project encourages art students and anyone interested in creative practice 
-    to feel confident in what they create, knowing that they are the ones who define both the process and 
-    the outcome. 
-  </p>
-    <div class="scroll-spacer"></div>
+      <img src="images/riso/AtoZ-Toolkit.gif" alt="A to Z Toolkit animation">
 
-</div>
+      <p>
+        This idea led to The A to Z Toolkit project, which reframes
+        tools as open-ended materials rather than objects limited to
+        their original functions. Tools are not markers of professionalism
+        but are shaped by creative intention. Once a tool is in the hands
+        of an artist, its meaning and use emerge through personal
+        interpretation and experimentation.
+      </p>
+
+      <img src="images/AtoZ/props.gif" alt="A to Z Toolkit objects">
+
+      <p>
+        The A to Z Toolkit Project encourages art students and anyone
+        interested in creative practice to feel confident in what they
+        create, knowing that they are the ones who define both the
+        process and the outcome.
+      </p>
+
+      <div class="scroll-spacer"></div>
+    </div>
+
     <div class="description" id="desc-proj1">
       <h2>From (baby) to Art Student</h2>
 
-       <!-- KEYWORDS -->
-  <div class="project-keywords">
-    <span>Book Design</span>
-    <span>Storytelling</span>
-  </div>
+      <div class="project-keywords">
+        <span>Book Design</span>
+        <span>Storytelling</span>
+      </div>
 
-      <p>This book traces my journey from childhood to becoming a senior art student in New York. 
-        Through personal narratives, I reflect on how my family, upbringing, and key life events 
-        have shaped my creative identity. It serves as a self-portrait of the experiences that continue 
-        to influence how I think, work, and grow as an artist.</p>
-        <img src="images/256/copycat.png" style="width: 220px; height: auto;">
-</div>
+      <p>
+        This book traces my journey from childhood to becoming a senior
+        art student in New York. Through personal narratives, I reflect
+        on how my family, upbringing, and key life events have shaped
+        my creative identity. It serves as a self-portrait of the
+        experiences that continue to influence how I think, work,
+        and grow as an artist.
+      </p>
+
+      <img src="images/256/copycat.png"
+           alt="From baby to Art Student book"
+           style="width: 220px; height: auto;">
+    </div>
 
     <div class="description" id="desc-proj4">
-      <h2>Helsink-Vantaa Airport<br> Brand & Identity Redesign</h2>
-      <div class="project-keywords">
-    <span>Branding</span>
-    <span>Motion Design</span>
+      <h2>Helsinki-Vantaa Airport Rebranding</h2>
 
-  </div>
-      <p>This redesign of Helsinki Airport intends to move away from 
-         conventional airport design—with its typical blue tones and modern serif fonts.
-         Exploring a less common palette of greens and browns and developing a modular typographic logo, 
-         it creates a system that reflects Finland’s nature-friendly character.
-         The flowing lines draw inspiration from the airport’s organic interior features .
+      <div class="project-keywords">
+        <span>Branding</span>
+        <span>Motion Design</span>
+      </div>
+
+      <p>
+        This redesign of Helsinki Airport intends to move away from
+        conventional airport design—with its typical blue tones and
+        modern serif fonts. Exploring a less common palette of greens
+        and browns and developing a modular typographic logo, it creates
+        a system that reflects Finland's nature-friendly character.
+        The flowing lines draw inspiration from the airport's organic
+        interior features.
       </p>
-    <video autoplay muted loop playsinline class="project-video">
-      <source src="images/HEL/HEL-motion-assets.mp4" type="video/mp4">
-    </video>
-  </div>
+
+      <video autoplay muted loop playsinline class="project-video">
+        <source src="images/HEL/HEL-motion-assets.mp4" type="video/mp4">
+      </video>
+    </div>
 
     <div class="description" id="desc-proj2">
       <h2>Doors</h2>
- <div class="project-keywords">
-    <span>Books Design</span>
-    <span>Photography</span>
-  </div>
-      <p>This project began by collecting images of doors across New York City, exploring the question: what lies behind each door? It grew to feature individuals who collect objects endlessly, reflecting how curiosity drives the act of collecting. The book incorporates a tactile experience: smaller page spreads camouflage within larger spreads, revealing themselves when flipped. Each flip evokes curiosity, inviting the audience to wonder about the people behind the doors.</p>
+
+      <div class="project-keywords">
+        <span>Book Design</span>
+        <span>Photography</span>
+      </div>
+
+      <p>
+        This project began by collecting images of doors across New York
+        City, exploring the question: what lies behind each door? It grew
+        to feature individuals who collect objects endlessly, reflecting
+        how curiosity drives the act of collecting. The book incorporates
+        a tactile experience: smaller page spreads camouflage within
+        larger spreads, revealing themselves when flipped. Each flip
+        evokes curiosity, inviting the audience to wonder about the
+        people behind the doors.
+      </p>
     </div>
 
-     <div class="description" id="desc-proj8">
+    <div class="description" id="desc-proj8">
       <h2>Journey to Space</h2>
-<div class="project-keywords">
-    <span>Typography</span>
-    <span>Data Visualization</span>
-  </div>
-      <p>The work translates a curated list of space and lunar travelers into a structured typographic system. Key information — including name, nationality, affiliated team, crew size, and year of travel — is organized for clarity while maintaining visual engagement.
-        While the content is data-driven, floating, freeform letterforms evoke the gravity-free environment of space, allowing the visual language to reflect the subject matter.
+
+      <div class="project-keywords">
+        <span>Typography</span>
+        <span>Data Visualization</span>
+      </div>
+
+      <p>
+        The work translates a curated list of space and lunar travelers
+        into a structured typographic system. Key information—including
+        name, nationality, affiliated team, crew size, and year of
+        travel—is organized for clarity while maintaining visual
+        engagement. While the content is data-driven, floating,
+        freeform letterforms evoke the gravity-free environment of
+        space, allowing the visual language to reflect the subject matter.
       </p>
     </div>
 
     <div class="description" id="desc-proj3">
       <h2>Happy Meal Toys Archive</h2>
-<div class="project-keywords">
-    <span>Web Design</span>
-  </div>
-      <p>Inspired by childhood visits to my aunt’s room, this website archives and showcases her collection of Happy Meal toys. 
-        It transforms a personal memory into a playful digital experience, celebrating nostalgia and the joy of discovery.</p>
-      <a href="https://yeonseochae.github.io/interaction-prj2-YeonseoChae/" target="_blank" class="launch-link">Launch site</a>
+
+      <div class="project-keywords">
+        <span>Web Design</span>
+      </div>
+
+      <p>
+        Inspired by childhood visits to my aunt's room, this website
+        archives and showcases her collection of Happy Meal toys.
+        It transforms a personal memory into a playful digital
+        experience, celebrating nostalgia and the joy of discovery.
+      </p>
+
+      <a href="https://yeonseochae.github.io/interaction-prj2-YeonseoChae/"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="launch-link">Launch site</a>
     </div>
 
-    
     <div class="description" id="desc-proj6">
       <h2>MPAA Rating System Redesign</h2>
-  <div class="project-keywords">
-    <span>Icon Design</span>
-    <span>AI Direction</span>
-  </div>
-      <p>A reimagined MPAA movie rating system using dinosaurs to represent different audience guidance 
-        levels. The design follows a growth and hierarchy metaphor, where each dinosaur reflects the 
-        intensity and maturity of the content, creating a fun and intuitive visual system.</p>
-        <p>The film stills are generated using AI and further animated through AI-based tools.</p>
+
+      <div class="project-keywords">
+        <span>Icon Design</span>
+        <span>AI Direction</span>
+      </div>
+
+      <p>
+        A reimagined MPAA movie rating system using dinosaurs to represent
+        different audience guidance levels. The design follows a growth
+        and hierarchy metaphor, where each dinosaur reflects the intensity
+        and maturity of the content, creating a fun and intuitive visual
+        system.
+      </p>
+
+      <p>
+        The film stills are generated using AI and further animated
+        through AI-based tools.
+      </p>
+
       <video autoplay muted loop playsinline class="project-video">
         <source src="images/mpaa/screens.mp4" type="video/mp4">
       </video>
-     
-
     </div>
+
     <div class="description" id="desc-proj7">
       <h2>Risograph Animations</h2>
-<div class="project-keywords">
-    <span>Motion Design</span>
-    <span>Risograph</span>
 
-  </div>
-      <p>These animations are created by printing each frame using risograph techniques and then digitally sequencing them. This process combines the tactile, textured quality of risograph prints with motion, giving each animation a unique, hand-crafted aesthetic.</p>
+      <div class="project-keywords">
+        <span>Motion Design</span>
+        <span>Risograph</span>
+      </div>
+
+      <p>
+        These animations are created by printing each frame using
+        risograph techniques and then digitally sequencing them.
+        This process combines the tactile, textured quality of
+        risograph prints with motion, giving each animation a unique,
+        hand-crafted aesthetic.
+      </p>
     </div>
+
   </div>
 
-  <!-- COLUMN 4 (PROJECTS) -->
+  <!-- THUMBNAILS / PROJECT IMAGES AND VIDEOS -->
   <div class="column fourth">
 
-<div class="project" id="about-section">
-  <p>
-    Hello! My name is Yeonseo. I am a multidisciplinary designer based in New York. 
-    By embracing diverse media, from print to digital, I love bringing in 
-    playfulness and warmth to projects.  
-     
-  </p>
- <div class="links">
-  <a href="mailto:ysyeonseo1012@gmail.com" class="about email">Email</a>
-  <a href="https://www.linkedin.com/in/yeonseo-chae-738b27356" target="_blank" class="about linkedin">LinkedIn</a>
-  <a href="#" class="about experience-link">Experience</a>
+    <!-- THUMBNAIL GRID (landing screen)
+         To change a thumbnail, swap the img src.
+         data-project must match the project's id below. -->
+    <section id="thumbnails" class="thumbnail-grid" aria-label="Projects">
 
-</div>
-</div>
+      <!-- INTRO (shows above the thumbnails on the Work page) -->
+      <p class="work-intro">
+        Yeonseo is a New York-based graphic designer specializing in branding and visual identity.
+        Through playful forms and human-centered storytelling, she creates meaningful,
+        approachable visual experiences.
 
-<!-- EXPERIENCE -->
-<div class="project" id="experience-section">
-  <p><strong>2026</strong> — Urban Creator/ Creative Marketing Internship</p>
-  <p><strong>2026</strong> — Parsons 2026 Thesis Show /Creative Identity Team</p>
-  <p><strong>2025</strong> — DERT Children's book illustrations</p>
-  <p><strong>2025</strong> — Offset Bookfair Exhibitor</p>
-  <p><strong>2024</strong> — <em>A Magical Winter Recap </em>Design & Production Assitant</p>
-  <p><strong>2023</strong> — GIVO (Give Orange)/Design Department Executive</p>
-  <p><strong>2022</strong> — GIVO (Give Orange)/Design Department Executive</p>
 
-</div>
+      </p>
 
-    <div class="project" id="proj1">
-      <img src="images/256/Untitled-1.gif">
-      <img src="images/256/256spread.png">
+      <button class="thumb" data-project="proj9" type="button">
+        <span class="thumb-media">
+          <img src="images/AtoZ/AtoZ-1.jpg" alt="">
+        </span>
+        <span class="thumb-title">THE A TO Z TOOLKIT</span>
+      </button>
+
+      <button class="thumb" data-project="proj6" type="button">
+        <span class="thumb-media">
+          <video autoplay muted loop playsinline>
+            <source src="images/mpaa/mpaa-video-appl.mp4" type="video/mp4">
+          </video>
+        </span>
+        <span class="thumb-title">MPAA RATING SYSTEM REDESIGN</span>
+      </button>
+
+      <button class="thumb" data-project="proj4" type="button">
+        <span class="thumb-media">
+          <img src="images/HEL/welcomebanner.jpg" alt="">
+        </span>
+        <span class="thumb-title">HELSINKI AIRPORT REBRANDING</span>
+      </button>
+
+      <!-- This thumbnail has an image slider, so it's a <div> instead of a
+           <button> (a button can't contain the arrow buttons) -->
+      <div class="thumb" data-project="proj1" role="button" tabindex="0">
+        <div class="thumb-media thumb-slider">
+          <div class="slider-window">
+            <div class="slider-track">
+              <img src="images/256/thumb1.png" alt="">
+              <img src="images/256/256-1.png" alt="">
+              <img src="images/256/256-3.png" alt="">
+              <img src="images/256/256-6.png" alt="">
+              <img src="images/256/256-7.png" alt="">
+            </div>
+          </div>
+          <div class="slider-controls">
+            <button class="slider-btn slider-prev" type="button" aria-label="Previous image">←</button>
+            <button class="slider-btn slider-next" type="button" aria-label="Next image">→</button>
+          </div>
+        </div>
+        <span class="thumb-title">FROM (BABY) TO AN ART STUDENT</span>
+      </div>
+
+      <button class="thumb" data-project="proj2" type="button">
+        <span class="thumb-media">
+          <img src="images/doors/doors.gif" alt="">
+        </span>
+        <span class="thumb-title">DOORS</span>
+      </button>
+
+      <!-- <button class="thumb" data-project="proj8" type="button">
+        <span class="thumb-media">
+          <img src="images/sky map-mockup.jpg" alt="">
+        </span>
+        <span class="thumb-title">JOURNEY TO SPACE</span>
+      </button> -->
+
+      <button class="thumb" data-project="proj3" type="button">
+        <span class="thumb-media">
+          <img src="images/poster1.png" alt="">
+        </span>
+        <span class="thumb-title">HAPPY MEAL ARCHIVE</span>
+      </button>
+
+      <button class="thumb" data-project="proj7" type="button">
+        <span class="thumb-media">
+          <img src="images/riso/Untitled-1.gif" alt="">
+        </span>
+        <span class="thumb-title">Riso Animations</span>
+      </button>
+
+    </section>
+
+    <!-- PLAY PAGE (creative, fun works)
+         Add pieces here using the same thumbnail format as Work:
+         <button class="thumb" data-project="play1" type="button">
+           <span class="thumb-media">
+             <img src="images/play/your-image.jpg" alt="">
+           </span>
+           <span class="thumb-title">Title</span>
+         </button>
+         Then add a matching <div class="project" id="play1"> with its
+         images below, and a <div class="description" id="desc-play1">
+         in the descriptions column. Delete the "coming soon" line
+         once you add your first piece. -->
+    <section id="play" class="play-page" aria-label="Play">
+      <p class="play-empty">Playful experiments coming soon.</p>
+      <div class="play-grid"></div>
+    </section>
+
+    <!-- ABOUT PAGE -->
+    <section id="about-landing" class="about-landing">
+
+      <div class="landing-column landing-middle">
+
+        <p class="landing-intro">
+          Yeonseo is a New York-based graphic designer specializing in
+          branding and visual identity. Through playful forms and human-centered
+          storytelling, she creates meaningful, approachable visual experiences.
+        </p>
+
+        <div class="landing-info">
+          <h2><span class="boxed-title">Services</span></h2>
+          <p>Branding &amp; Visual Identity</p>
+          <p>Art Direction</p>
+          <p>Graphic Design</p>
+          <p>Editorial Design</p>
+        </div>
+
+        <div class="landing-info">
+          <h2><span class="boxed-title">Education</span></h2>
+          <p>Parsons School of Design</p>
+          <p>BFA Communication Design · 2026</p>
+        </div>
+
+      </div>
+
+      <div class="landing-column landing-right">
+        <div class="landing-contact">
+
+          <!-- TODO: replace with your real email address -->
+          <a class="contact-link" href="mailto:your-email@example.com">
+            Email ↗
+          </a>
+
+          <a class="contact-link"
+             href="https://www.linkedin.com/in/yeonseo-chae-738b27356"
+             target="_blank"
+             rel="noopener noreferrer">
+            LinkedIn ↗
+          </a>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- BACK TO THUMBNAILS (shown only while a project is open) -->
+    <button id="back-to-thumbs" class="back-button" type="button">
+      ← All work
+    </button>
+
+    <!-- PROJ9: THE A TO Z TOOLKIT -->
+    <div class="project" id="proj9">
+      <img src="images/AtoZ/AtoZ-1.jpg" alt="A to Z Toolkit">
+      <img src="images/AtoZ/bookspread-blue.gif" alt="A to Z book spread">
+      <img src="images/AtoZ/AtoZ-2.jpg" alt="A to Z Toolkit spread">
+      <img src="images/AtoZ/AtoZ-5.jpg">
+      <img src="images/AtoZ/AtoZ-3.jpg" alt="A to Z Toolkit spread">
+      <img src="images/AtoZ/AtoZ-4.jpg" alt="A to Z Toolkit spread">
+      <img src="images/AtoZ/books4.png" alt="A to Z Toolkit books">
+
+      <video controls loop playsinline class="project-video">
+        <source src="images/AtoZ/AtoZ-Film.mp4" type="video/mp4">
+      </video>
+
+      <img src="images/AtoZ/props3.png" alt="A to Z Toolkit props">
+      <img src="images/AtoZ/props2.png" alt="A to Z Toolkit props">
     </div>
-    
-<!-- PROJECT IMAGES -->
 
+    <!-- PROJ1: FROM BABY TO ART STUDENT -->
+    <div class="project" id="proj1">
+    <div class="slider">
+        <div class="slider-window">
+           <div class="slider-track">
+           <img src="images/256/256-1.png" alt="">
+           <img src="images/256/256-2.png" alt="">
+           <img src="images/256/256-27.png">
+           <img src="images/256/256-28.png">
+           <img src="images/256/256-29.png">
+
+      <!-- add as many <img> lines as you want -->
+        </div>
+    </div>
+
+  <div class="slider-controls">
+    <button class="slider-btn slider-prev" type="button" aria-label="Previous image">←</button>
+    <span class="slider-count"></span>
+    <button class="slider-btn slider-next" type="button" aria-label="Next image">→</button>
+  </div>
+</div>
+      <img src="images/256/bookspread1.png">
+      <img src="images/256/bookspread5.png">
+      <img src="images/256/Untitled-1.gif" alt="From baby to Art Student">
+      <img src="images/256/book-physical.png">
+      <img src="images/256/bookspread3.png">
+      <img src="images/256/twandtoyw-version2.gif">
+      <img src="images/256/twtoys.png">
+      <img src="images/256/bookspread2.png">
+
+      <img src="images/256/single bs2.png">
+      <img src="images/256/bookspread4.png" alt="Book spread">
+    </div>
+
+    <!-- PROJ4: HELSINKI AIRPORT -->
     <div class="project" id="proj4">
       <video autoplay muted loop playsinline class="project-video">
-        <source src="images/HEL/welcomeHEL-motion-finaldraft 2.mov" type="video/mp4">
+        <source src="images/HEL/welcomeHEL-motion-finaldraft 2.mp4" type="video/mp4">
       </video>
-            <img id="HELlogo" src="images/HEL/HELlogo.png" class="clickable-image">
-      <p>Signages</p>
-      <img id="HELsigns" src="images/HEL/signs.png">
-      <img src="images/HEL/signages.png">
-      <p>Color System</p>
-        <img src="images/HEL/colorshex.png">
-        <img src="images/HEL/welcomebanner.jpg"> 
-        <img src="images/HEL/welcomebanner2.jpg">
-             
-      <p>Digital Experience</p>
-      <img src="images/HEL/appstore.png">
-      <img src="images/HEL/app icon.jpg">
-      <img src="images/HEL/app features.png">
 
+      <img id="HELlogo" src="images/HEL/HELlogo.png" alt="Helsinki Airport logo">
+
+      <p>Signages</p>
+      <img id="HELsigns" src="images/HEL/signs.png" alt="Airport signage">
+      <img src="images/HEL/signages.png" alt="Signage applications">
+
+      <p>Color System</p>
+      <img src="images/HEL/colorshex.png" alt="Color system">
+
+      <div class="slider slider-full">
+        <div class="slider-window">
+          <div class="slider-track">
+            <img src="images/HEL/welcomebanner.jpg" alt="Welcome banner">
+            <img src="images/HEL/welcomebanner2.jpg" alt="Welcome banner variation">
+          </div>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-btn slider-prev" type="button" aria-label="Previous image">←</button>
+          <span class="slider-count"></span>
+          <button class="slider-btn slider-next" type="button" aria-label="Next image">→</button>
+        </div>
+      </div>
+
+      <p>Digital Experience</p>
+      <img src="images/HEL/app icon.jpg" alt="App icon">
+      <img src="images/HEL/appstore.png">
+      <img src="images/HEL/app features.jpg" alt="App features">
     </div>
 
+    <!-- PROJ2: DOORS -->
     <div class="project" id="proj2">
-      <img id="doors" src="images/doors/doors.gif">
-     <img src="images/doors/doors-layout2.png">
-      <img src="images/doors/doors-layout.png">
-    </div> 
+      <img id="doors" src="images/doors/doors.gif" alt="Doors project animation">
+      <img src="images/doors/doors-layout2.png" alt="Doors book layout">
+      <img src="images/doors/doors-layout.png" alt="Doors book spreads">
+    </div>
 
- <div class="project" id="proj8">
-  <img src="images/sky map-mockup.jpg">
-  <img src="images/skymap-detail1.png">
-  <img src="images/skymap-detail2.png">
-  <img src="images/sky-map-1.jpg">
+    <!-- PROJ8: JOURNEY TO SPACE -->
+    <div class="project" id="proj8">
+      <img src="images/sky map-mockup.jpg" alt="Journey to Space map">
+      <img src="images/skymap-detail1.png" alt="Space map detail">
+      <img src="images/skymap-detail2.png" alt="Space map detail">
+      <img src="images/sky-map-1.jpg" alt="Journey to Space visualization">
+    </div>
 
-     
- </div>
-
+    <!-- PROJ3: HAPPY MEAL ARCHIVE -->
     <div class="project" id="proj3">
-  <!-- Hyperlinked video -->
-  <a href="https://yeonseochae.github.io/interaction-prj2-YeonseoChae/" target="_blank" class="launch-site">
-    <video autoplay muted loop playsinline class="project-video">
-      <source src="images/int-full-vid.mov" type="video/mp4">
-    </video>
-  </a>
-  <!-- First row of images -->
-  <div class="project-row"> 
-    <img src="images/int2-img1.png"> 
-    <img src="images/int2-img2.png"> 
-    <img src="images/int2-img3.png"> 
-    <img src="images/int2-img4.png"> 
-  </div> 
-  <!-- Second row of images -->
-  <div class="project-row"> 
-    <img src="images/poster1.png"> 
-    <img src="images/poster2.png"> 
-    <img src="images/poster3.png"> 
-    <img src="images/poster4.png"> 
-  </div> 
-  <!-- Second video (not hyperlinked) -->
-  <video autoplay muted loop playsinline class="project-video">
-    <source src="images/int-vid2.mov" type="video/mp4">
-  </video>
 
-</div>
+      <a href="https://yeonseochae.github.io/interaction-prj2-YeonseoChae/"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="launch-site">
 
-<div class="project" id="proj5">
-      <video controls class="project-video2">
+        <video class="project-video" autoplay muted loop playsinline preload="auto">
+          <source src="images/int-full-vid.mp4" type="video/mp4">
+        </video>
+
+        <span class="launch-overlay">LAUNCH SITE ↗</span>
+      </a>
+
+      <div class="project-row">
+        <img src="images/int2-img1.png" alt="Happy Meal archive screen 1">
+        <img src="images/int2-img2.png" alt="Happy Meal archive screen 2">
+        <img src="images/int2-img3.png" alt="Happy Meal archive screen 3">
+        <img src="images/int2-img4.png" alt="Happy Meal archive screen 4">
+      </div>
+
+      <div class="project-row">
+        <img src="images/poster1.png" alt="Happy Meal poster 1">
+        <img src="images/poster2.png" alt="Happy Meal poster 2">
+        <img src="images/poster3.png" alt="Happy Meal poster 3">
+        <img src="images/poster4.png" alt="Happy Meal poster 4">
+      </div>
+
+      <video class="project-video" autoplay muted loop playsinline preload="auto">
+        <source src="images/int-vid2.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- PROJ5: EXTRA VIDEO PROJECT (not in the menu) -->
+    <div class="project" id="proj5">
+      <video class="project-video2" autoplay muted loop playsinline preload="auto">
         <source src="images/YeonseoChae-project3-dynamic-[042924] (edited).mp4" type="video/mp4">
       </video>
     </div>
-<div class="project" id="proj6">
-  <video autoplay muted loop playsinline class="project-video">
+
+    <!-- PROJ6: MPAA RATING -->
+    <div class="project" id="proj6">
+      <img src="images/mpaa/tvapplication.png">
+
+      <img src="images/mpaa/mpaa-layout.png" alt="MPAA rating layout">
+      <img src="images/mpaa/icons.png" alt="MPAA rating icons">
+
+      <video autoplay muted loop playsinline class="project-video">
         <source src="images/mpaa/mpaa-video-appl.mp4" type="video/mp4">
       </video>
-   <img src="images/mpaa/icons.png">
-   <img src="images/mpaa/mpaa-layout.png">
-   <img src="images/mpaa/mpaa-list.png">
-   <img src="images/mpaa/screen-example.png">
-   <p>Visual Application</p>
-   <img src="images/mpaa/movie-layout2.png">
-   <!-- <img src="images/mpaa/show-logos.png"> -->
-</div>
-<div class="project" id="proj7">
-  <img src="images/riso/AtoZ-Toolkit.gif">
-  <img src="images/riso/Untitled-1.gif">
-</div>
+      <img src="images/mpaa/mpaa-list.jpg" alt="MPAA rating list">
 
-<div class="project" id="proj9">
-  <img src="images/AtoZ/AtoZ-1.jpg">
-  <img src="images/AtoZ/bookspread-blue.gif">
-  <img src="images/AtoZ/AtoZ-2.jpg">
-  <img src="images/AtoZ/AtoZ-3.jpg">
-  <img src="images/AtoZ/AtoZ-4.jpg">
-  <img src="images/AtoZ/books4.png">
-<video controls loop playsinline class="project-video">
-    <source src="images/AtoZ/AtoZ-Film.mp4" type="video/mp4">
-</video>
-  <img src="images/AtoZ/props3.png">
-  <!-- <img src="images/AtoZ/props1.png"> -->
-  <img src="images/AtoZ/props2.png">
+      <p>Visual Application</p>
+      <img src="images/mpaa/tvapplication2.png">
+      <img src="images/mpaa/screen-cards.jpg" alt="Rating screen example">
+      <img src="images/mpaa/movie-layout2.png" alt="Movie rating applications">
+    </div>
 
-
-
-</div>
+    <!-- PROJ7: RISOGRAPH ANIMATIONS -->
+    <div class="project" id="proj7">
+      <img src="images/riso/AtoZ-Toolkit.gif" alt="Risograph animation">
+      <img src="images/riso/Untitled-1.gif" alt="Risograph animation">
+    </div>
 
   </div>
 
+  </main>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

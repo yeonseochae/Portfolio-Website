@@ -1,104 +1,203 @@
-/* ---------------------- FONTS ---------------------- */
-@font-face {
-  font-family: 'MyFont';
-  src: url('fonts/ABC Monument-Grotesk/ABCMonumentGrotesk-Regular-Trial.otf') format('opentype');
-}
+/* ================================
+   FONTS
+================================ */
 
 @font-face {
-  font-family: 'MyFont2';
-  src: url('fonts/ABC Monument-Grotesk/ABCMonumentGrotesk-Bold-Trial.otf') format('opentype');
+  font-family: "MyFont";
+  src: url("fonts/ABC Monument-Grotesk/ABCMonumentGrotesk-Regular-Trial.otf") format("opentype");
 }
 
 @font-face {
-  font-family: 'MyFont3';
-  src: url('fonts/ABC Monument-Grotesk/ABCMonumentGrotesk-Heavy-Trial.otf') format('opentype');
-}
-.body{
-  cursor:none;
-}
-.about.email {
-  font-size: 20px;
-}
-.about.linkedin {
-  font-size: 20px;
-}
-.about.experience-link{
-  font-size: 20px;
-}
-/* Email hover */
-.about.email:hover {
-  color: #ff3939;
-  text-decoration: underline;
-}
-/* LinkedIn hover */
-.about.linkedin:hover {
-  text-decoration: underline;
-  color: #4165f9; /* LinkedIn blue */
-}
-.about.experience-link:hover {
-  text-decoration: underline;
-  color: #49e889; /* LinkedIn blue */
+  font-family: "MyFont2";
+  src: url("fonts/ABC Monument-Grotesk/ABCMonumentGrotesk-Bold-Trial.otf") format("opentype");
 }
 
-.back-home-icon {
-  position: fixed;
-  top: 13px;
-  left: 10px;
-  width: 35px;
-  z-index: 1000;
-  cursor: none;
-  display: none; /* hidden initially */
-}
-/* Default state */
-.email-link {
-  color: rgb(31, 31, 31);
-  font-weight: bold;
-  cursor: none;
-  transition: color 0.5s;
-  font-size: 18px;
+@font-face {
+  font-family: "MyFont3";
+  src: url("fonts/ABC Monument-Grotesk/ABCMonumentGrotesk-Heavy-Trial.otf") format("opentype");
 }
 
-/* Hover state */
-.email-link:hover {
-  animation: emailColorWave 2.0s linear infinite;
+@font-face {
+  font-family: "MyFont4";
+  src: url("fonts/ABC Monument-Grotesk/ABCMonumentGrotesk-Medium-Trial.otf") format("opentype");
 }
-.image-modal {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  left: 0;
-  top: 0;
+
+/* ================================
+   GLOBAL
+================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.9);
-  justify-content: center;
-  align-items: center;
-  cursor: pointer; /* show that the user can click to close */
-}
-
-/* ---------------------- GLOBAL ---------------------- */
-body {
-  height: 100vh;
   margin: 0;
+}
+
+body {
+  /* Header on top, page content below */
+  --header-h: 56px;
+  --page-side: 24px;
+
   display: flex;
+  flex-direction: column;
   overflow: hidden;
-  font-family: 'MyFont', sans-serif;
-  cursor: none;
+  font-family: "MyFont", sans-serif;
 }
 
-#custom-cursor {
-  position: fixed;
-  width: 22px;
-  height: 22px;
-  opacity: 0.92;
+.light-mode {
+  background-color: white;
+  color: black;
+}
+
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+p {
+  margin-top: 0;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.site-header {
+  flex: 0 0 var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 var(--page-side);
+}
+
+/* Scrolled down: the header slides up out of view
+   and the page takes over its space.
+   The transition is only here, so hiding is animated
+   but reappearing is instant. */
+body.header-hidden .site-header {
+  margin-top: calc(-1 * var(--header-h));
+  opacity: 0;
   pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
+  transition: margin-top 0.35s ease, opacity 0.25s ease;
 }
 
-/* ---------------------- LAYOUT COLUMNS ---------------------- */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Smaller gif (was 45px) */
+.corner-gif {
+  display: block;
+  width: 28px;
+  height: auto;
+}
+
+/* Smaller name (was 21px) */
+.myname {
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: "MyFont4", sans-serif;
+  font-size: 17px;
+  line-height: 1;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+/* ================================
+   LIGHT / DARK MODE TOGGLE
+================================ */
+
+.theme-toggle {
+  position: relative;
+  width: 32px;
+  height: 18px;
+  padding: 0;
+  border: 2px solid currentColor;
+  border-radius: 999px;
+  background: transparent;
+  flex-shrink: 0;
+}
+
+.toggle-knob {
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background-color: currentColor;
+  transform: translateY(-50%);
+  transition: left 0.4s ease-in-out;
+}
+
+/* Dark mode: knob slides to the right */
+body.dark-mode .toggle-knob {
+  left: calc(100% - 13px);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.nav-btn {
+  --nav-gray: #b3b3b3;
+
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--nav-gray);
+  font-family: "MyFont", sans-serif;
+  font-size: 17px;
+  line-height: 1;
+  transition: color 0.3s ease, -webkit-text-stroke 0.35s ease;
+}
+
+body.dark-mode .nav-btn {
+  --nav-gray: #5c5c5c;
+}
+
+/* Current page is black (white in dark mode); others are gray */
+.nav-btn.active,
+.nav-btn:hover {
+  color: black;
+}
+
+body.dark-mode .nav-btn.active,
+body.dark-mode .nav-btn:hover {
+  color: white;
+}
+
+/* ================================
+   COLUMNS
+================================ */
+
+.layout {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
 .column {
   height: 100%;
+  min-width: 0;
   padding: 2rem;
   overflow-y: auto;
   scrollbar-width: none;
@@ -108,112 +207,23 @@ body {
   display: none;
 }
 
-/* Column sizes */
-.first  { flex: 1.2; padding: 57px 25px 0px 25px; overflow: hidden; }
-.second { flex: 1.7; padding: 10px 7px; display: none; flex-direction: column; align-items: center; gap: 20px; }
-.third  { flex: 2.8; padding: 17px; padding-right: 30px; order: 4; }
-.fourth { flex: 6.5; padding: 16px 12px; order: 3; }
-
-/* ---------------------- FIRST COLUMN ---------------------- */
-.myname {
-  font-size: 25px;
-  font-family: 'MyFont';
-  margin-top: 5px;
+/* Description column (right) */
+.third {
+  flex: 2.8;
+  order: 4;
+  padding: 16px var(--page-side) 16px 17px;
 }
 
-.information {
-  margin-top: 20px;
-  font-size: 18.5px;
-  line-height: 17px;
+/* Thumbnails / project images column */
+.fourth {
+  flex: 8.2;
+  order: 3;
+  padding: 16px 12px 16px var(--page-side);
 }
 
-.information p:hover {
-  -webkit-text-stroke: .7px;
-  font-size: 19px;
-  transition: all 0.35s ease;
-  cursor: none;
-}
-
-.first-information {
-  height: 140px;
-  margin: 0;
-  padding: 16px 0 0 0;
-  line-height: 24px;
-  cursor: none;
-}
-
-.first-information p {
-  margin: 7px 0;
-}
-
-.first-content {
-  display: flex;
-  flex-direction: column;
-  padding: 20px 0 0 0;
-  line-height: 1;
-  gap: 3.5px;
-}
-
-.first-content p {
-  margin: 0;
-  color: rgb(31, 31, 31);
-  font-size: 13px;
-  line-height: 14px;
-  font-family: 'MyFont2';
-  transition: 0.3s;
-}
-
-.first-content p:hover {
-  font-family: 'MyFont3';
-  font-size: 13px;
-}
-
-/* ---------------------- SECOND COLUMN (TEXT MENU) ---------------------- */
-
-.menu-item {
-  font-size: 18.5px;
-  font-family: 'MyFont';
-  line-height: 17px;
-  cursor: none;
-  transition: all 0.35s ease;
-  -webkit-text-stroke: 0px transparent;
-  margin-top: 18.26px;
-}
-.menu-item:hover{
- -webkit-text-stroke: .7px;
-  font-size: 19px;
-  transition: all 0.35s ease;
-  cursor: none;
-}
-/* HOVER — same as information column */
-
-/* ACTIVE (clicked project) */
-.menu-item.active {
-  font-family: 'MyFont2'; /* bold version stays selected */
-}
-
-/* ---------------------- THIRD COLUMN (DESCRIPTIONS) ---------------------- */
-.column.third {
-  height: 100vh;      /* makes column full screen height */
-  overflow-y: auto;   /* enables vertical scrolling */
-}
-.scroll-spacer {
-  height: 80px;
-}
-.column.third h2 {
-  margin-bottom: 7px;
-  font-size: 22px;
-  line-height: 24px;
-  font-family: 'MyFont';
-}
-
-.column.third p {
-  font-size: 19px;
-  line-height: 24px;
-  margin-top: 0;
-  margin-bottom: 20px;
-
-}
+/* ================================
+   DESCRIPTIONS
+================================ */
 
 .column.third .description {
   display: none;
@@ -223,102 +233,281 @@ body {
   display: block;
 }
 
-/* Ensure images inside descriptions (if added later) scale */
+.column.third h2 {
+  margin-bottom: 7px;
+  font-family: "MyFont", sans-serif;
+  font-size: 22px;
+  line-height: 24px;
+}
+
+.column.third p {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 19px;
+  line-height: 24px;
+}
+
 .column.third img {
+  display: block;
   max-width: 100%;
   height: auto;
-  display: block;
   margin: 0 auto 15px;
 }
+
+.column.third video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 15px;
+  object-fit: contain;
+}
+
+.scroll-spacer {
+  height: 80px;
+}
+
+/* ================================
+   PROJECT KEYWORDS
+================================ */
+
 .project-keywords {
-  margin: 7px 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 4px; /* space between keyword boxes */
+  gap: 4px;
+  margin: 7px 0;
 }
 
 .project-keywords span {
-  background-color: rgb(31, 31, 31); /* light gray, adjust as needed */
-  color: #ffffff;
   padding: 5px 10px;
-  border-radius: 20px;  /* makes the rounded pill shape */
-  font-size: 15px;
-  font-family: 'MyFont';
-}
-/* ---------------------- FOURTH COLUMN (PROJECTS) ---------------------- */
-.column.fourth h2 {
-  position: sticky;
-  top: 0;
-  margin: 0 0 8px 0;
-  font-size: 20px;
-  font-family: 'MyFont';
-  background: transparent;
-  z-index: 10;
-}
-
-.column.fourth p {
+  border-radius: 20px;
+  background-color: rgb(31, 31, 31);
+  color: white;
+  font-family: "MyFont", sans-serif;
   font-size: 15px;
 }
-.about {
-  display: inline-block;
-  margin-right: 12px;
-  text-decoration: none;
-  color: inherit;
-  transition: color 0.2s ease, text-decoration 0.2s ease;
-}
-#about-section p  {
-  font-size: 20px;        /* change this to whatever size you want */
-  font-family: 'MyFont'; /* optional: match your other content */
-  color: inherit;         /* inherits light/dark mode color */
-  margin-top: 10px;
-  cursor: none;
-  line-height: 24px;
-}
-#experience-section p {
-  font-size: 15px;        /* change this to whatever size you want */
-  line-height: 17px;
-  font-family: 'MyFont'; /* optional: match your other content */
-  margin: 3px;
-  color: inherit;         /* inherits light/dark mode color */
-}
-#about-section {
-  max-width: 520px;   /* control width here */
-  width: 100%;
-  margin: 0 auto;     /* center it */
-}
-#experience-section {
-  max-width: 520px;   /* control width here */
-  width: 100%;
-  margin: 0 auto;     /* center it */
-  margin-top: 10px;
+
+body.dark-mode .project-keywords span {
+  background-color: white;
+  color: black;
 }
 
-.project {
+/* ================================
+   THUMBNAIL GRID (landing screen)
+================================ */
+
+.thumbnail-grid {
   display: none;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 60px 0 30px 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 16px;
+  padding-bottom: 40px;
 }
 
-.project.active {
+.thumbnail-grid.active {
+  display: grid;
+}
+
+/* Intro text above the Work thumbnails.
+   Sits in the first column only, so it's exactly as wide
+   as the left thumbnails; the right side of its row stays empty. */
+.column.fourth .work-intro {
+  grid-column: 1;
+  max-width: 500px; /* line length; lower = narrower */
+  margin: 8px 0 12px;
+  font-size: 15px; /* same as the header */
+  line-height: 1.35;
+}
+
+.thumb {
   display: block;
-  margin-top: 0;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
 }
 
-/* ---------------------- PROJECT IMAGES & VIDEOS ---------------------- */
-.project img,
-.project-video {
+.thumb:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+/* All thumbnails share one size and shape.
+   Change --thumb-ratio to try another shape, e.g. 1 / 1 or 4 / 3 */
+.thumbnail-grid,
+.play-grid {
+  --thumb-ratio: 3 / 2;
+}
+
+/* ================================
+   PLAY PAGE
+================================ */
+
+.play-page {
+  display: none;
+}
+
+.play-page.active {
+  display: block;
+}
+
+.play-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 16px;
+  padding-bottom: 40px;
+}
+
+.play-empty {
+  font-size: 17px;
+  color: #8a8a8a;
+}
+
+.thumb-media {
+  display: block;
+  aspect-ratio: var(--thumb-ratio);
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+body.dark-mode .thumb-media {
+  background-color: #1a1a1a;
+}
+
+.thumb-media img,
+.thumb-media video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* On the thumbnail screen the description column is hidden,
+   so the grid spans both the image and description columns */
+body.thumbs-open .column.third {
+  display: none;
+}
+
+/* On Work and Play the grid spans the full width */
+body.thumbs-open .column.fourth {
+  flex: 1 1 100%;
+  padding-right: var(--page-side);
+}
+
+.thumb:hover .thumb-media img,
+.thumb:hover .thumb-media video {
+  transform: scale(1.03);
+}
+
+/* Keeps the first thumbnail on the next row, below the intro */
+.thumbnail-grid .work-intro + .thumb {
+  grid-column: 1;
+}
+
+.thumb-title {
+  display: block;
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 1.2;
+  transition: -webkit-text-stroke 0.35s ease;
+}
+
+.thumb:hover .thumb-title {
+  -webkit-text-stroke: 0.5px;
+}
+
+/* ================================
+   BACK TO THUMBNAILS BUTTON
+================================ */
+
+.back-button {
+  display: none;
+  position: sticky;
+  top: -16px;
+  z-index: 20;
+  width: 100%;
+  margin: -16px 0 12px;
+  padding: 16px 0 10px;
+  border: none;
+  background: inherit;
+  color: inherit;
+  font-family: "MyFont", sans-serif;
+  font-size: 17px;
+  text-align: left;
+  transition: -webkit-text-stroke 0.35s ease;
+}
+
+.back-button:hover {
+  -webkit-text-stroke: 0.7px;
+}
+
+body.project-open .back-button {
+  display: block;
+}
+
+.light-mode .back-button {
+  background-color: white;
+}
+
+.dark-mode .back-button {
+  background-color: black;
+}
+
+/* ================================
+   PROJECT VISIBILITY
+================================ */
+
+.column.fourth > .project {
+  display: none;
+}
+
+.column.fourth > .project.active {
+  display: block;
+}
+
+/* ================================
+   PROJECT IMAGES AND VIDEOS
+================================ */
+
+.column.fourth {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.column.fourth .project {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.column.fourth .project img,
+.column.fourth .project video {
+  display: block;
+  width: auto;
   max-width: 100%;
   height: auto;
-  display: block;
   margin: 0 auto 20px;
-  object-fit: cover;
+  object-fit: contain;
+}
+
+.column.fourth .project-video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto 20px;
 }
 
 #proj5 .project-video2 {
-  width: 480px;
+  width: 100px;
+  max-width: 50%;
   height: auto;
-  display: block;
   margin: 0 auto;
 }
 
@@ -326,111 +515,805 @@ body {
   width: 100%;
   max-width: 470px;
   height: auto;
-  display: block;
-  margin: 0 auto;
 }
 
-/* ---------------------- PROJECT ROWS ---------------------- */
 .project-row {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 10px;
-  flex-wrap: wrap;
   margin-bottom: 15px;
 }
 
 .project-row img {
-  width: 100%;
-  max-width: calc((100% - 30px)/4);
+  width: calc((100% - 30px) / 4);
+  max-width: calc((100% - 30px) / 4);
   height: auto;
   object-fit: cover;
 }
 
 .project-row.two-col img {
+  width: calc((100% - 10px) / 2);
+  max-width: calc((100% - 10px) / 2);
+}
+
+.column.fourth h2 {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  margin: 0 0 8px;
+  background: transparent;
+  font-family: "MyFont", sans-serif;
+  font-size: 20px;
+}
+
+.column.fourth p {
+  font-size: 15px;
+}
+
+#HELlogo {
   width: 100%;
-  max-width: calc((100% - 10px)/2);
+  margin: 25px 0 20px;
 }
 
-/* ---------------------- SPECIAL ELEMENTS ---------------------- */
-#HELlogo { width: 100%; margin: 25px 0 20px 0; }
-#HELsigns { margin-bottom: 20px; }
-#doors { margin-bottom: 20px; }
+#HELsigns,
+#doors {
+  margin-bottom: 20px;
+}
 
-.corner-gif {
+/* ================================
+   ABOUT LANDING PAGE
+================================ */
+
+.about-landing {
+  /* Follows light / dark mode */
+  --landing-bg: white;
+  --landing-text: black;
+
+  /* Covers the page area below the header */
   position: fixed;
-  top: 30px;
-  left: 25px;
-  width: 50px;
+  top: var(--header-h);
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 1000;
-  pointer-events: auto;
-  cursor: pointer;
+
+  display: none;
+  grid-template-columns: 8.2fr 2.8fr;
+  gap: 40px;
+  padding: 16px var(--page-side) 40px;
+  margin: 0;
+
+  overflow-y: auto;
+  background-color: var(--landing-bg);
+  color: var(--landing-text);
 }
 
-/* ---------------------- LAUNCH SITE TOOLTIP ---------------------- */
+/* About page moves up too when the header hides */
+body.header-hidden .about-landing {
+  top: 0;
+  transition: top 0.35s ease;
+}
+
+.about-landing.active {
+  display: grid;
+}
+
+.landing-column {
+  min-width: 0;
+}
+
+.landing-middle {
+  max-width: 500px;
+}
+
+body.dark-mode .about-landing {
+  --landing-bg: black;
+  --landing-text: white;
+}
+
+.landing-middle > p {
+  margin-top: 0;
+}
+
+.about-landing .landing-middle p {
+  font-size: 21px;
+}
+
+.landing-intro {
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+.landing-info {
+  margin-bottom: 32px;
+}
+
+.landing-info h2 {
+  margin: 0 0 10px;
+  font-size: 22px;
+}
+
+.landing-info p {
+  margin: 0 0 2px;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+/* Section title boxes */
+
+.boxed-title {
+  display: inline-block;
+  padding: 4px 5px;
+  border: 2.6px solid var(--landing-text);
+  font-family: "MyFont", sans-serif;
+  font-size: 21px;
+  line-height: 1.1;
+}
+
+/* Contact links */
+
+.landing-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.contact-link {
+  display: inline-block;
+  padding: 4px 5px;
+  border: 2.6px solid var(--landing-text);
+  color: var(--landing-text);
+  font-family: "MyFont", sans-serif;
+  font-size: 21px;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: color 0.25s ease,
+              background-color 0.25s ease,
+              border-color 0.25s ease;
+}
+
+.contact-link:hover {
+  color: var(--landing-bg);
+  background-color: var(--landing-text);
+}
+
+/* ================================
+   LAUNCH SITE (Happy Meal project)
+================================ */
+
 .launch-site {
+  display: block;
   position: relative;
-  font-family: 'MyFont2';
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
-.launch-site::after {
-  content: "(launch site)";
+.launch-site .project-video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  object-fit: contain;
+}
+
+.launch-overlay {
   position: absolute;
-  top: 50%;
-  left: 45%;
-  background: rgb(31, 31, 31);
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
   color: white;
-  font-size: 11px;
+  font-family: "MyFont4", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   opacity: 0;
-  padding: 4px 8px;
-  transition: opacity 0.2s;
   pointer-events: none;
+  transition: opacity 0.4s ease;
 }
 
-.launch-site:hover::after {
+.launch-site:hover .launch-overlay {
   opacity: 1;
 }
+
 .launch-link {
-  color: rgb(31, 31, 31);           /* text color */
-  text-decoration: none;     /* remove underline */
+  position: relative;
+  color: rgb(31, 31, 31);
+  font-family: "MyFont4", sans-serif;
   font-weight: 500;
-  position: relative;        /* needed for pseudo-element */
+  text-decoration: none;
   transition: color 0.3s;
 }
 
-/* Hover: underline animation */
+body.dark-mode .launch-link {
+  color: white;
+}
+
 .launch-link::after {
-  content: '';
   position: absolute;
+  bottom: -2px;
   left: 0;
-  bottom: -2px;              /* slightly below text */
   width: 0;
   height: 2px;
-  background-color: rgb(31, 31, 31);
+  background-color: currentColor;
+  content: "";
   transition: width 0.3s;
 }
 
-.launch-link:hover {
-  cursor: none;
-  color: rgb(31, 31, 31);            /* slightly darker text on hover */
-}
-
 .launch-link:hover::after {
-  width: 100%;    
+  width: 100%;
 }
 
-/* Light mode */
+/* ================================
+   LIGHT AND DARK MODES
+================================ */
+
 .light-mode .column {
-  background-color: white !important;
-  color: black !important;
+  background-color: white;
+  color: black;
 }
 
-/* Dark mode */
 .dark-mode .column {
-  background-color: black !important;
-  color: white !important;
-}
-
-/* Dark mode for paragraphs in first content */
-body.dark-mode .first-content p {
+  background-color: black;
   color: white;
 }
+
+/* ================================
+   CURSORS
+================================ */
+
+html,
+body,
+body *,
+body *::before,
+body *::after {
+  cursor: auto;
+}
+
+a,
+button,
+.corner-gif,
+.thumb,
+.thumb * {
+  cursor: pointer;
+}
+
+/* ================================
+   RESPONSIVE LAYOUT
+================================ */
+
+@media (max-width: 900px) {
+  .third {
+    flex: 1;
+    padding-right: 12px;
+  }
+
+  .fourth {
+    flex: 2;
+  }
+
+  .about-landing .landing-middle p {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    --header-h: 48px;
+    --page-side: 14px;
+  }
+
+  .corner-gif {
+    width: 22px;
+  }
+
+  .myname,
+  .nav-btn {
+    font-size: 15px;
+  }
+
+  .site-nav {
+    gap: 14px;
+  }
+
+  .third {
+    display: none;
+  }
+
+  .fourth {
+    flex: 1;
+    padding: 12px var(--page-side);
+  }
+
+  /* Phones: the column is too narrow for two, so stack them */
+  .thumbnail-grid,
+  .play-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .back-button {
+    top: -12px;
+    margin-top: -12px;
+    padding-top: 12px;
+    font-size: 15px;
+  }
+
+  .thumb-title {
+    font-size: 14px;
+  }
+
+  .column.fourth .work-intro {
+    margin: 4px 0 4px;
+    font-size: 15px; /* same as the header on phones */
+  }
+
+  .about-landing {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px var(--page-side) 30px;
+  }
+
+  .about-landing .landing-middle p {
+    font-size: 17px;
+  }
+
+  .landing-intro,
+  .landing-info {
+    margin-bottom: 25px;
+  }
+
+  .project-row img {
+    width: calc((100% - 10px) / 2);
+    max-width: calc((100% - 10px) / 2);
+  }
+}
+/* ================================
+   ABOUT PAGE: ONE FONT SIZE
+   Keep this at the very end of the file
+   so it overrides the sizes above.
+================================ */
+
+.about-landing,
+.about-landing .landing-middle p,
+.about-landing .landing-info h2,
+.about-landing .landing-info p,
+.about-landing .boxed-title,
+.about-landing .contact-link {
+  font-size: 15px;
+}
+
+/* ================================
+   ABOUT PAGE: UNDERLINES INSTEAD OF BOXES
+   Keep this at the very end of the file.
+================================ */
+
+.about-landing .boxed-title,
+.about-landing .contact-link {
+  padding: 0;
+  border: none;
+  background: none;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+/* Links fade a little on hover instead of filling in */
+.about-landing .contact-link:hover {
+  color: var(--landing-text);
+  background: none;
+  opacity: 0.55;
+}
+
+.about-landing .contact-link {
+  transition: opacity 0.25s ease;
+}
+
+/* Contact links sit a little closer together without boxes */
+.about-landing .landing-contact {
+  gap: 4px;
+}
+/* About bio lines up with the Work page intro (keep at the very end) */
+.about-landing .landing-intro {
+  margin-top: 8px;
+  line-height: 1.35;
+  max-width: min(500px, calc((100vw - 2 * var(--page-side) - 16px) / 2));
+}
+
+@media (max-width: 600px) {
+  .about-landing .landing-intro {
+    margin-top: 4px;
+    max-width: none;
+  }
+}
+/* About page: section titles in gray (same as hovered links) */
+.about-landing .boxed-title {
+  opacity: 0.55;
+}
+/* Thumbnail titles in the Medium weight */
+.thumb-title {
+  font-family: "MyFont4", sans-serif;
+}
+/* Project page: description left, images right */
+@media (min-width: 601px) {
+  body.project-open .column.third {
+    order: 2;
+    padding: 16px 17px 16px var(--page-side);
+  }
+
+  body.project-open .column.fourth {
+    order: 3;
+    padding-left: 12px;
+    padding-right: var(--page-side);
+  }
+}
+/* A to Z book spread fills the image column */
+.column.fourth .project img[src$="bookspread-blue.gif"] {
+  width: 100%;
+}
+
+/* Description column text size: change 15px to resize it all */
+.column.third {
+  --desc-size: 17px;
+}
+
+.column.third h2,
+.column.third p,
+.column.third .launch-link,
+.column.third .project-keywords span {
+  font-size: var(--desc-size);
+  line-height: 1.35;
+}
+
+/* Keywords as plain text, separated by commas */
+.project-keywords {
+  gap: 0;
+  margin: 4px 0 14px;
+}
+
+.project-keywords span,
+body.dark-mode .project-keywords span {
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  color: inherit;
+}
+
+.project-keywords span:not(:last-child)::after {
+  content: ",\00a0";
+}
+/* Project title size (separate from the description text) */
+.column.third h2 {
+  font-size: 20px;
+  line-height: 1.25;
+}
+/* Project keywords in gray (same as the About page section titles) */
+.project-keywords {
+  opacity: 0.55;
+}
+.column.third .project-keywords span {
+  font-size: 15.5px;
+}
+/* Sun icon (top middle of the header) */
+.site-header {
+  position: relative;
+}
+
+.header-sun {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 15.5px;  /* change to resize the sun */
+  width: auto;
+  color: currentColor; /* the sun's color */
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .header-sun {
+    display: none;
+  }
+}
+/* bookspread1.png: smaller and centered in the image column */
+.column.fourth .project img[src$="bookspread1.png"] {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.column.fourth .project img[src$="bookspread2.png"] {
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.column.fourth .project img[src$="single bs2.png"] {
+  max-width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.column.fourth .project img[src$="book-physical.png"] {
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.column.fourth .project img[src$="tvapplication.png"] {
+  max-width: 88%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.column.fourth .project img[src$="twtoys.png"] {
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ================================
+   IMAGE SLIDER (arrows to move between images)
+================================ */
+
+.slider {
+  margin: 0 0 20px;
+}
+
+.slider-window {
+  overflow: hidden;
+  transition: height 0.45s ease;
+}
+
+.slider-track {
+  display: flex;
+  align-items: flex-start;
+  transition: transform 0.45s ease;
+}
+
+.slider-track > * {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.column.fourth .project .slider-track img,
+.column.fourth .project .slider-track video {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+.slider-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.slider-btn {
+  padding: 0 4px;
+  border: none;
+  background: none;
+  font-size: 20px;
+  line-height: 1;
+  transition: opacity 0.25s ease;
+}
+
+.slider-btn:hover {
+  opacity: 0.55;
+}
+
+.slider-count {
+  font-size: 15px;
+  opacity: 0.55;
+}
+
+/* ================================
+   SLIDER ADJUSTMENTS
+   - smaller, centered slider
+   - no page number
+   - larger arrows sitting on top of the image
+================================ */
+
+.slider {
+  --slider-width: 75%; /* change to resize the slider */
+  position: relative;
+  max-width: var(--slider-width);
+  margin: 0 auto 20px;
+}
+
+/* Hide the "1 / 3" page number */
+.slider-count {
+  display: none;
+}
+
+/* Arrows sit on the image, at the left and right edges */
+.slider-controls {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0 14px;
+  pointer-events: none;
+}
+
+.slider-btn {
+  font-size: 30px; /* arrow size */
+  color: white;
+  mix-blend-mode: difference; /* stays visible on light and dark images */
+  pointer-events: auto;
+}
+
+@media (max-width: 600px) {
+  .slider {
+    --slider-width: 100%;
+  }
+}
+
+/* Arrows just outside the slider, to its left and right */
+.slider-controls {
+  left: -48px;
+  right: -48px;
+  padding: 0;
+}
+
+.slider-btn {
+  color: inherit;
+  mix-blend-mode: normal;
+}
+
+/* Phones: no room beside the slider, so the arrows sit on the image */
+@media (max-width: 600px) {
+  .slider-controls {
+    left: 0;
+    right: 0;
+    padding: 0 10px;
+  }
+
+  .slider-btn {
+    color: white;
+    mix-blend-mode: difference;
+  }
+}
+
+/* ================================
+   THUMBNAIL IMAGE SLIDER
+   (From (baby) to Art Student thumbnail)
+================================ */
+
+.thumb-slider {
+  position: relative;
+}
+
+.thumb-slider .slider-window,
+.thumb-slider .slider-track {
+  height: 100%;
+}
+
+/* Arrows sit on the image, at the left and right edges */
+.thumb-slider .slider-controls {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0 12px;
+  pointer-events: none;
+}
+
+.thumb-slider .slider-btn {
+  font-size: 30px;
+  color: white;
+  mix-blend-mode: difference; /* visible on light and dark images */
+  pointer-events: auto;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+/* Arrows appear when you hover over the thumbnail */
+.thumb:hover .thumb-slider .slider-btn,
+.thumb-slider .slider-btn:focus-visible {
+  opacity: 1;
+}
+
+.thumb-slider .slider-btn:hover {
+  opacity: 0.6;
+}
+
+/* Touch screens have no hover, so show the arrows all the time */
+@media (hover: none) {
+  .thumb-slider .slider-btn {
+    opacity: 1;
+  }
+}
+
+/* Hover zoom: zoom the whole slider frame, not each image,
+   so the next image doesn't peek in at the edge */
+.thumb:hover .thumb-slider img {
+  transform: none;
+}
+
+.thumb-slider .slider-window {
+  transition: transform 0.5s ease;
+}
+
+.thumb:hover .thumb-slider .slider-window {
+  transform: scale(1.03);
+}
+/* Thumbnail slider: smaller images with space around them */
+.thumb-slider {
+  --thumb-slide-space: 8%;
+}
+
+.thumb-slider .slider-track img {
+  object-fit: contain;
+  padding: var(--thumb-slide-space);
+}
+/* MPAA thumbnail: show the whole 16:9 video, with black bars filling the rest */
+.thumb[data-project="proj6"] .thumb-media,
+body.dark-mode .thumb[data-project="proj6"] .thumb-media {
+  background-color: #111111;
+}
+
+.thumb[data-project="proj6"] .thumb-media video {
+  object-fit: contain;
+}
+/* Smaller gap between the two toy images */
+.column.fourth .project img[src$="twandtoyw-version2.gif"] {
+  margin-bottom: 0px;
+}
+.column.fourth .project img[src$="twtoys.png"] {
+  margin-bottom: 40px;
+}
+/* Full-width slider (Helsinki banners): arrows sit on the image */
+.slider.slider-full {
+  --slider-width: 100%;
+}
+
+.slider-full .slider-controls {
+  left: 0;
+  right: 0;
+  padding: 0 14px;
+}
+
+.slider-full .slider-btn {
+  color: white;
+  mix-blend-mode: normal;
+}
+/* From (baby) to Art Student thumbnail: background color */
+.thumb[data-project="proj1"] .thumb-media,
+body.dark-mode .thumb[data-project="proj1"] .thumb-media {
+  background-color: #111111; /* change this to your color */
+}
+/* Sun color per project (change the hex codes to your own colors) */
+.header-sun {
+  transition: color 0s ease;
+}
+
+body[data-project="proj4"] .header-sun { color: #7dca91; } /* Helsinki Airport */
+body[data-project="proj9"] .header-sun { color: #2c5bd9; } /* The A to Z Toolkit */
+body[data-project="proj1"] .header-sun { color: #d3caae; } /* From (baby) to Art Student */
+body[data-project="proj2"] .header-sun { color: #8b5a2b; } /* Doors */
+body[data-project="proj8"] .header-sun { color: #3b3f8f; } /* Journey to Space */
+body[data-project="proj3"] .header-sun { color: #ea5037; } /* Happy Meal Archive */
+body[data-project="proj7"] .header-sun { color: #ff48b0; } /* Riso Animations */
+
+/* MPAA Rating (proj6): sun cycles through 5 colors */
+@keyframes sun-five-colors {
+  0%   { color: #62b35f; } /* color 1 */
+  20%  { color: #537fbc; } /* color 2 */
+  40%  { color: #f7cc46; } /* color 3 */
+  60%  { color: #e4823b; } /* color 4 */
+  80%  { color: #da4533; } /* color 5 */
+  100% { color: #62b35f; } /* back to color 1 */
+}
+
+body[data-project="proj6"] .header-sun {
+  animation: sun-five-colors 3s step-end infinite;
+}
+
