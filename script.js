@@ -351,7 +351,22 @@ document.querySelectorAll(".slider, .thumb-slider").forEach(slider => {
   show(false);
 });
 
+// =============================
+// TWO IMAGES SIDE BY SIDE: SAME HEIGHT, FULL WIDTH
+// =============================
+// Each image in a .project-row.two-col gets a width that matches its
+// shape (wider images get more room), so both end up the same height
+// and together they fill the whole row.
 
+document.querySelectorAll(".project-row.two-col img").forEach(img => {
+  function balance() {
+    if (img.naturalWidth && img.naturalHeight) {
+      img.style.flexGrow = img.naturalWidth / img.naturalHeight;
+    }
+  }
+  if (img.complete) balance();
+  img.addEventListener("load", balance);
+});
 // =============================
 // INITIAL STATE
 // =============================

@@ -1052,7 +1052,11 @@ body.dark-mode .project-keywords span {
   margin-left: auto;
   margin-right: auto;
 }
-
+.column.fourth .project img[src$="HELlogo.png"] {
+  max-width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
 /* ================================
    IMAGE SLIDER (arrows to move between images)
 ================================ */
@@ -1063,7 +1067,7 @@ body.dark-mode .project-keywords span {
 
 .slider-window {
   overflow: hidden;
-  transition: height 0.45s ease;
+  transition: height 0.4s ease;
 }
 
 .slider-track {
@@ -1316,4 +1320,40 @@ body[data-project="proj7"] .header-sun { color: #ff48b0; } /* Riso Animations */
 body[data-project="proj6"] .header-sun {
   animation: sun-five-colors 3s step-end infinite;
 }
+/* Two images side by side in one row (always, even if other
+   image rules try to make them full width) */
+.column.fourth .project .project-row.two-col {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+}
 
+.column.fourth .project .project-row.two-col > img {
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto !important;
+  max-width: none !important;
+  height: auto;
+  margin: 0 !important;
+}
+/* Text inside project pages: narrower lines */
+.column.fourth .project p {
+  max-width: 50%; /* 3/5 of the image column */
+  margin-left: auto;
+  opacity: .55;
+  font-size: 14px;
+}
+
+/* Small headings in project pages sit close to the text below */
+.column.fourth .project p.section-title {
+  margin-bottom: 4px;
+}
+
+/* Phones: the column is already narrow, so use the full width */
+@media (max-width: 600px) {
+  .column.fourth .project p {
+    max-width: 100%;
+  }
+}
