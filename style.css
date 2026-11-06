@@ -1358,3 +1358,199 @@ body[data-project="proj6"] .header-sun {
     font-size: 12px;
   }
 }
+
+/* ================================
+   SUN ON SMALLER SCREENS
+   Below 800px wide the header is too tight to center the sun,
+   so it sits in the free space between your name and the buttons.
+================================ */
+@media (max-width: 800px) {
+  .header-sun {
+    display: block;
+    position: static;
+    transform: none;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-sun {
+    height: 12px; /* change to resize the sun on phones */
+  }
+
+  /* Keep the name and buttons on one line each */
+  .myname,
+  .nav-btn {
+    white-space: nowrap;
+  }
+
+  .site-header {
+    gap: 10px;
+  }
+}
+
+/* Very small phones (like the original iPhone SE): tighter spacing */
+@media (max-width: 370px) {
+  .site-header {
+    gap: 8px;
+  }
+
+  .site-nav {
+    gap: 9px;
+  }
+
+  .myname,
+  .nav-btn {
+    font-size: 12px;
+  }
+}
+/* Phones: project description on top, then the images */
+@media (max-width: 600px) {
+  .layout {
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+
+  .layout::-webkit-scrollbar {
+    display: none;
+  }
+
+  .layout > .column {
+    flex: none;
+    height: auto;
+    overflow: visible;
+  }
+
+  body.project-open .column.third {
+    display: block;
+    order: 1;
+    padding: 12px var(--page-side) 0;
+  }
+
+  body.project-open .column.fourth {
+    order: 2;
+  }
+}
+/* Phones: smaller project title, keywords and description */
+@media (max-width: 600px) {
+  .column.third h2 {
+    font-size: 13px; /* project title */
+    font-family: "MyFont4";
+  }
+
+  .column.third p,
+  .column.third .launch-link {
+    font-size: 13px; /* description */
+  }
+
+  .column.third .project-keywords span {
+    font-size: 12px; /* keywords */
+  }
+}
+/* Phones: hide GIFs in the project description only */
+@media (max-width: 600px) {
+  .column.third img[src$=".gif"] {
+    display: none !important;
+  }
+}
+/* Phones: "All work" button above the project title */
+@media (max-width: 600px) {
+  body.project-open .column.fourth {
+    display: contents;
+  }
+
+  /* Each piece keeps its full height, so the page scrolls as one */
+  body.project-open .back-button,
+  body.project-open .column.third,
+  body.project-open .column.fourth > .project.active {
+    flex: none;
+  }
+
+  /* 1. "All work" button at the very top (stays pinned while scrolling) */
+  body.project-open .back-button {
+    order: 0;
+    top: 0;
+    margin: 0;
+    padding: 12px var(--page-side) 8px;
+  }
+
+  /* 2. Title, keywords and description */
+  body.project-open .column.third {
+    order: 1;
+    padding-top: 4px;
+  }
+
+  /* 3. Project images */
+  body.project-open .column.fourth > .project.active {
+    order: 2;
+    min-width: 0;
+    padding: 12px var(--page-side);
+  }
+}
+/* Top bar on project pages: "All work" left, caret (back to top) right */
+.project-topbar {
+  display: none;
+  position: sticky;
+  top: -16px;
+  z-index: 20;
+  align-items: center;
+  justify-content: space-between;
+  margin: -16px 0 12px;
+  padding: 16px 0 10px;
+}
+
+body.project-open .project-topbar {
+  display: flex;
+}
+
+.light-mode .project-topbar {
+  background-color: white;
+}
+
+.dark-mode .project-topbar {
+  background-color: black;
+}
+
+body.project-open .project-topbar .back-button {
+  display: block;
+  position: static;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+
+.to-top-button {
+  display: flex;
+  align-items: center;
+  padding: 4px 2px;
+  border: none;
+  background: none;
+  transition: opacity 0.25s ease;
+}
+
+.to-top-button svg {
+  display: block;
+  width: 16px; /* caret size */
+  height: auto;
+}
+
+.to-top-button:hover {
+  opacity: 0.55;
+}
+
+/* Phones: the bar sits above the project title */
+@media (max-width: 600px) {
+  body.project-open .project-topbar {
+    order: 0;
+    flex: none;
+    top: 0;
+    margin: 0;
+    padding: 12px var(--page-side) 8px;
+  }
+
+  .to-top-button svg {
+    width: 14px;
+  }
+}

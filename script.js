@@ -4,6 +4,7 @@
 
 const thirdColumn = document.querySelector(".column.third");
 const fourthColumn = document.querySelector(".column.fourth");
+const layout = document.querySelector(".layout");
 
 const thumbnailGrid = document.getElementById("thumbnails");
 const thumbnails = document.querySelectorAll(".thumb");
@@ -56,11 +57,10 @@ function playVideos(container) {
 // page is one of: "work", "play", "about", "project"
 function setPage(page) {
   pauseAllVideos();
-
   // Forget which project was open (the sun goes back to its normal color)
   delete document.body.dataset.project;
-
   // Hide everything first
+
   projects.forEach(project => project.classList.remove("active"));
   descriptions.forEach(description => description.classList.remove("active"));
   if (thumbnailGrid) thumbnailGrid.classList.remove("active");
@@ -82,6 +82,7 @@ function setPage(page) {
   if (fourthColumn) fourthColumn.scrollTop = 0;
   if (thirdColumn) thirdColumn.scrollTop = 0;
   if (aboutLanding) aboutLanding.scrollTop = 0;
+  if (layout) layout.scrollTop = 0;
 }
 
 function showThumbnails() {
@@ -110,10 +111,8 @@ function showProject(projectId) {
   }
 
   setPage("project");
-
   // Remember which project is open, so CSS can color the sun for it
   document.body.dataset.project = projectId;
-
   selectedProject.classList.add("active");
 
   const selectedDescription = document.getElementById("desc-" + projectId);
@@ -128,7 +127,7 @@ function showProject(projectId) {
 // CLICK EVENTS
 // =============================
 
-// Thumbnails (on Work and Off-the-Clock) open their project
+// Thumbnails (on Work and Play) open their project
 thumbnails.forEach(thumb => {
   thumb.addEventListener("click", () => showProject(thumb.dataset.project));
 
@@ -233,7 +232,7 @@ function addSmoothScroll(el) {
 
 // Skip for people who've turned on "reduce motion" in their settings
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  document.querySelectorAll(".column, .about-landing").forEach(addSmoothScroll);
+  document.querySelectorAll(".column, .about-landing, .layout").forEach(addSmoothScroll);
 }
 
 
@@ -246,7 +245,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
 const HIDE_AFTER = 40; // pixels scrolled before the header hides
 const SHOW_BEFORE = 20; // header returns when this close to the top
 
-document.querySelectorAll(".column, .about-landing").forEach(el => {
+document.querySelectorAll(".column, .about-landing, .layout").forEach(el => {
   el.addEventListener("scroll", () => {
     if (el.scrollTop > HIDE_AFTER) {
       document.body.classList.add("header-hidden");
@@ -352,21 +351,20 @@ document.querySelectorAll(".slider, .thumb-slider").forEach(slider => {
 });
 
 // =============================
-// TWO IMAGES SIDE BY SIDE: SAME HEIGHT, FULL WIDTH
+// BACK TO TOP (caret button)
 // =============================
-// Each image in a .project-row.two-col gets a width that matches its
-// shape (wider images get more room), so both end up the same height
-// and together they fill the whole row.
+// Jumps straight to the top of the project, no scrolling animation.
 
-document.querySelectorAll(".project-row.two-col img").forEach(img => {
-  function balance() {
-    if (img.naturalWidth && img.naturalHeight) {
-      img.style.flexGrow = img.naturalWidth / img.naturalHeight;
-    }
-  }
-  if (img.complete) balance();
-  img.addEventListener("load", balance);
-});
+const toTopButton = document.getElementById("to-top");
+
+if (toTopButton) {
+  toTopButton.addEventListener("click", () => {
+    if (fourthColumn) fourthColumn.scrollTop = 0;
+    if (thirdColumn) thirdColumn.scrollTop = 0;
+    if (layout) layout.scrollTop = 0; // phones
+    document.body.classList.remove("header-hidden");
+  });
+}
 // =============================
 // INITIAL STATE
 // =============================
