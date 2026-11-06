@@ -1554,3 +1554,42 @@ body.project-open .project-topbar .back-button {
     width: 14px;
   }
 }
+/* Wiggly text on hover (add class="wiggle-text" to any paragraph) */
+.wiggle-word {
+  display: inline-block;
+  white-space: nowrap; /* words never break in the middle */
+}
+
+.wiggle-letter {
+  display: inline-block;
+}
+
+.wiggle-text:hover .wiggle-letter {
+  animation: letter-wiggle var(--t) ease-in-out var(--d) infinite alternate;
+}
+
+@keyframes letter-wiggle {
+  from {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate(var(--x), var(--y)) rotate(var(--r));
+  }
+}
+
+/* Screen readers read the normal sentence, not letter by letter */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* No wiggling for people who've turned on "reduce motion" */
+@media (prefers-reduced-motion: reduce) {
+  .wiggle-text:hover .wiggle-letter {
+    animation: none;
+  }
+}

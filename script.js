@@ -366,6 +366,48 @@ if (toTopButton) {
   });
 }
 // =============================
+// WIGGLY TEXT ON HOVER
+// =============================
+// Splits any .wiggle-text paragraph into single letters and gives each
+// one its own random wiggle. WIGGLE_AMOUNT: higher = wilder.
+
+const WIGGLE_AMOUNT = 1;
+
+document.querySelectorAll(".wiggle-text").forEach(el => {
+  const text = el.textContent.trim().replace(/\s+/g, " ");
+  const random = (min, max) => (min + Math.random() * (max - min)).toFixed(2);
+
+  el.textContent = "";
+
+  // Hidden copy of the sentence for screen readers
+  const readable = document.createElement("span");
+  readable.className = "sr-only";
+  readable.textContent = text;
+  el.appendChild(readable);
+
+  const words = text.split(" ");
+  words.forEach((word, i) => {
+    const wordSpan = document.createElement("span");
+    wordSpan.className = "wiggle-word";
+    wordSpan.setAttribute("aria-hidden", "true");
+
+    for (const char of word) {
+      const letter = document.createElement("span");
+      letter.className = "wiggle-letter";
+      letter.textContent = char;
+      letter.style.setProperty("--x", random(-2, 2) * WIGGLE_AMOUNT + "px");
+      letter.style.setProperty("--y", random(-3, 3) * WIGGLE_AMOUNT + "px");
+      letter.style.setProperty("--r", random(-14, 14) * WIGGLE_AMOUNT + "deg");
+      letter.style.setProperty("--t", random(0.25, 0.5) + "s");
+      letter.style.setProperty("--d", random(-0.5, 0) + "s");
+      wordSpan.appendChild(letter);
+    }
+
+    el.appendChild(wordSpan);
+    if (i < words.length - 1) el.appendChild(document.createTextNode(" "));
+  });
+});
+// =============================
 // INITIAL STATE
 // =============================
 
