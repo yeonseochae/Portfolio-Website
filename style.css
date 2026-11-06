@@ -815,7 +815,7 @@ button,
 
   .myname,
   .nav-btn {
-    font-size: 15px;
+    font-size: 13px;
   }
 
   .site-nav {
@@ -846,12 +846,12 @@ button,
   }
 
   .thumb-title {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .column.fourth .work-intro {
     margin: 4px 0 4px;
-    font-size: 15px; /* same as the header on phones */
+    font-size: 13px; /* same as the header on phones */
   }
 
   .about-landing {
@@ -1355,5 +1355,6 @@ body[data-project="proj6"] .header-sun {
 @media (max-width: 600px) {
   .column.fourth .project p {
     max-width: 100%;
+    font-size: 12px;
   }
 }
