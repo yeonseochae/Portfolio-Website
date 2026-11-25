@@ -441,10 +441,10 @@ document.querySelectorAll(".play-gallery img").forEach(img => {
 // =============================
 // IMAGE POP-UP (lightbox)
 // =============================
-// Click a gallery image to see it large. Arrows (or the keyboard's
-// left/right keys, or a swipe on phones) move to the previous/next
-// image in the same gallery. Click outside the image, or press Esc,
-// to go back.
+// Click a gallery image to see it large, with its title above.
+// Arrows (or the keyboard's left/right keys, or a swipe on phones)
+// move to the previous/next image in the same gallery.
+// Click outside the image, or press Esc, to go back.
 
 const lightbox = document.createElement("div");
 lightbox.className = "lightbox";
@@ -452,8 +452,16 @@ lightbox.setAttribute("role", "dialog");
 lightbox.setAttribute("aria-modal", "true");
 lightbox.setAttribute("aria-label", "Enlarged image");
 
+const lightboxFigure = document.createElement("figure");
+lightboxFigure.className = "lightbox-figure";
+
+const lightboxTitle = document.createElement("figcaption");
+lightboxTitle.className = "lightbox-title";
+
 const lightboxImg = document.createElement("img");
 lightboxImg.alt = "";
+
+lightboxFigure.append(lightboxTitle, lightboxImg);
 
 const lightboxPrev = document.createElement("button");
 lightboxPrev.className = "lightbox-btn lightbox-prev";
@@ -467,7 +475,7 @@ lightboxNext.type = "button";
 lightboxNext.setAttribute("aria-label", "Next image");
 lightboxNext.textContent = "→";
 
-lightbox.append(lightboxPrev, lightboxImg, lightboxNext);
+lightbox.append(lightboxPrev, lightboxFigure, lightboxNext);
 document.body.appendChild(lightbox);
 
 let lightboxImages = []; // the images in the gallery that was clicked
@@ -479,6 +487,9 @@ function showLightboxImage(index) {
   const img = lightboxImages[lightboxIndex];
   lightboxImg.src = img.currentSrc || img.src;
   lightboxImg.alt = img.alt;
+
+  // Title comes from the image's data-title in the HTML
+  lightboxTitle.textContent = img.dataset.title || "";
 
   // Hide the arrows if the gallery has only one image
   const many = count > 1;
@@ -503,7 +514,7 @@ document.querySelectorAll(".play-gallery img").forEach(img => {
 lightboxPrev.addEventListener("click", () => showLightboxImage(lightboxIndex - 1));
 lightboxNext.addEventListener("click", () => showLightboxImage(lightboxIndex + 1));
 
-// Clicking the dark area (not the image or the arrows) closes it
+// Clicking the dark area (not the image, title or arrows) closes it
 lightbox.addEventListener("click", e => {
   if (e.target === lightbox) closeLightbox();
 });
