@@ -13,11 +13,6 @@
 }
 
 @font-face {
-  font-family: "MyFont3";
-  src: url("fonts/ABC Monument-Grotesk/ABCMonumentGrotesk-Heavy-Trial.otf") format("opentype");
-}
-
-@font-face {
   font-family: "MyFont4";
   src: url("fonts/ABC Monument-Grotesk/ABCMonumentGrotesk-Medium-Trial.otf") format("opentype");
 }
@@ -236,7 +231,7 @@ body.dark-mode .nav-btn:hover {
 .column.third h2 {
   margin-bottom: 7px;
   font-family: "MyFont", sans-serif;
-  font-size: 22px;
+  font-size: 12px;
   line-height: 24px;
 }
 
@@ -260,6 +255,7 @@ body.dark-mode .nav-btn:hover {
   max-width: 100%;
   height: auto;
   margin: 0 auto 15px;
+  margin-top: 15px;
   object-fit: contain;
 }
 
@@ -990,7 +986,7 @@ body.dark-mode .project-keywords span {
 }
 /* Project title size (separate from the description text) */
 .column.third h2 {
-  font-size: 20px;
+  font-size: 19px;
   line-height: 1.25;
 }
 /* Project keywords in gray (same as the About page section titles) */
@@ -1591,5 +1587,185 @@ body.project-open .project-topbar .back-button {
 @media (prefers-reduced-motion: reduce) {
   .wiggle-text:hover .wiggle-letter {
     animation: none;
+  }
+}
+/* ================================
+   DESCRIPTION SECTIONS (Context, Challenge, Role)
+   Gray labels, normal-colored text underneath.
+================================ */
+
+.column.third .desc-label {
+  margin: 12px 0 0px;
+  font-size: 13.5px;      /* same as the keywords */
+  font-weight: normal;
+  line-height: 1.35;
+  opacity: 0.55;          /* same gray as the rest of the portfolio */
+}
+
+.column.third .desc-label + p {
+  margin-bottom: 0;       /* label and text stay together */
+}
+
+@media (max-width: 600px) {
+  .column.third .desc-label {
+    margin-top: 14px;
+    font-size: 12px;      /* same as the keywords on phones */
+  }
+}
+/* Text under Context / Challenge / Role */
+.column.third .desc-label + p {
+  font-size: 16px; /* change this number */
+}
+
+/* Phones */
+@media (max-width: 600px) {
+  .column.third .desc-label + p {
+    font-size: 13px;
+  }
+}
+/* Thumbnail captions: title on the left, year on the right */
+.thumb-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.thumb-year {
+  flex-shrink: 0; /* the year never wraps or squeezes */
+}
+/* Off-the-Clock gallery: rows about 1/5 of the screen tall */
+.play-gallery {
+  --row-height: 20vh; /* change to make rows taller or shorter */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 8px;
+  padding-bottom: 40px;
+}
+
+.play-gallery img {
+  display: block;
+  flex: var(--ar, 1.5) 1 calc(var(--ar, 1.5) * var(--row-height));
+  min-width: 0;
+  width: 0;
+  height: auto;
+  margin: 0;
+}
+
+/* Keeps the last row from stretching a few images across the full width */
+.play-gallery::after {
+  content: "";
+  flex-grow: 999;
+}
+
+@media (max-width: 600px) {
+  .play-gallery {
+    --row-height: 14vh;
+    gap: 6px;
+  }
+}
+/* Off-the-Clock section headings (e.g. "Illustrations") */
+.column.fourth .play-heading {
+  position: static;
+  margin: 8px 0 5px;
+  font-family: "MyFont4", sans-serif; /* same Medium font as your thumbnail titles */
+  font-size: 14px;
+  font-weight: normal;
+}
+
+@media (max-width: 600px) {
+  .column.fourth .play-heading {
+    margin: 4px 0 8px;
+    font-size: 12px;
+  }
+}
+/* Image pop-up (lightbox) for the Off-the-Clock gallery */
+.column.fourth .play-gallery img {
+  cursor: zoom-in;
+}
+/* Image pop-up (lightbox) for the Off-the-Clock gallery */
+.column.fourth .play-gallery img {
+  cursor: zoom-in;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 3000; /* above the header and the sun */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 72px; /* side space leaves room for the arrows */
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  cursor: zoom-out;
+}
+
+.lightbox.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  cursor: default;
+  transform: scale(0.97);
+  transition: transform 0.25s ease;
+}
+
+.lightbox.open img {
+  transform: scale(1);
+}
+
+/* Arrows: same style as the image sliders, in white */
+.lightbox-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 8px;
+  border: none;
+  background: none;
+  color: white;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.25s ease;
+}
+
+.lightbox-btn:hover {
+  opacity: 0.55;
+}
+
+.lightbox-prev {
+  left: 20px;
+}
+
+.lightbox-next {
+  right: 20px;
+}
+
+@media (max-width: 600px) {
+  .lightbox {
+    padding: 16px 48px;
+  }
+
+  .lightbox-btn {
+    font-size: 24px;
+  }
+
+  .lightbox-prev {
+    left: 6px;
+  }
+
+  .lightbox-next {
+    right: 6px;
   }
 }

@@ -424,6 +424,107 @@ document.querySelectorAll(".project-row.two-col img").forEach(img => {
   img.addEventListener("load", balance);
 });
 // =============================
+// OFF-THE-CLOCK GALLERY
+// =============================
+// Tells the CSS each image's shape (width ÷ height), so horizontal
+// and vertical images share one height within each row.
+
+document.querySelectorAll(".play-gallery img").forEach(img => {
+  function setShape() {
+    if (img.naturalWidth && img.naturalHeight) {
+      img.style.setProperty("--ar", img.naturalWidth / img.naturalHeight);
+    }
+  }
+  if (img.complete) setShape();
+  img.addEventListener("load", setShape);
+});
+// =============================
+// IMAGE POP-UP (lightbox)
+// =============================
+// Click a gallery image to see it large. Arrows (or the keyboard's
+// left/right keys, or a swipe on phones) move to the previous/next
+// image in the same gallery. Click outside the image, or press Esc,
+// to go back.
+
+const lightbox = document.createElement("div");
+lightbox.className = "lightbox";
+lightbox.setAttribute("role", "dialog");
+lightbox.setAttribute("aria-modal", "true");
+lightbox.setAttribute("aria-label", "Enlarged image");
+
+const lightboxImg = document.createElement("img");
+lightboxImg.alt = "";
+
+const lightboxPrev = document.createElement("button");
+lightboxPrev.className = "lightbox-btn lightbox-prev";
+lightboxPrev.type = "button";
+lightboxPrev.setAttribute("aria-label", "Previous image");
+lightboxPrev.textContent = "←";
+
+const lightboxNext = document.createElement("button");
+lightboxNext.className = "lightbox-btn lightbox-next";
+lightboxNext.type = "button";
+lightboxNext.setAttribute("aria-label", "Next image");
+lightboxNext.textContent = "→";
+
+lightbox.append(lightboxPrev, lightboxImg, lightboxNext);
+document.body.appendChild(lightbox);
+
+let lightboxImages = []; // the images in the gallery that was clicked
+let lightboxIndex = 0;
+
+function showLightboxImage(index) {
+  const count = lightboxImages.length;
+  lightboxIndex = (index + count) % count; // loops around
+  const img = lightboxImages[lightboxIndex];
+  lightboxImg.src = img.currentSrc || img.src;
+  lightboxImg.alt = img.alt;
+
+  // Hide the arrows if the gallery has only one image
+  const many = count > 1;
+  lightboxPrev.style.display = many ? "" : "none";
+  lightboxNext.style.display = many ? "" : "none";
+}
+
+function openLightbox(img) {
+  lightboxImages = Array.from(img.closest(".play-gallery").querySelectorAll("img"));
+  showLightboxImage(lightboxImages.indexOf(img));
+  lightbox.classList.add("open");
+}
+
+function closeLightbox() {
+  lightbox.classList.remove("open");
+}
+
+document.querySelectorAll(".play-gallery img").forEach(img => {
+  img.addEventListener("click", () => openLightbox(img));
+});
+
+lightboxPrev.addEventListener("click", () => showLightboxImage(lightboxIndex - 1));
+lightboxNext.addEventListener("click", () => showLightboxImage(lightboxIndex + 1));
+
+// Clicking the dark area (not the image or the arrows) closes it
+lightbox.addEventListener("click", e => {
+  if (e.target === lightbox) closeLightbox();
+});
+
+document.addEventListener("keydown", e => {
+  if (!lightbox.classList.contains("open")) return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowLeft") showLightboxImage(lightboxIndex - 1);
+  if (e.key === "ArrowRight") showLightboxImage(lightboxIndex + 1);
+});
+
+// Swipe left/right on phones
+let lightboxStartX = null;
+lightbox.addEventListener("touchstart", e => { lightboxStartX = e.touches[0].clientX; }, { passive: true });
+lightbox.addEventListener("touchend", e => {
+  if (lightboxStartX === null) return;
+  const dx = e.changedTouches[0].clientX - lightboxStartX;
+  if (Math.abs(dx) > 40) showLightboxImage(lightboxIndex + (dx < 0 ? 1 : -1));
+  lightboxStartX = null;
+});
+// =============================
 // INITIAL STATE
 // =============================
 
