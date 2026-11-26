@@ -1596,13 +1596,21 @@ body.project-open .project-topbar .back-button {
 
 .column.third .desc-label {
   margin: 12px 0 0px;
-  font-size: 13.5px;      /* same as the keywords */
+  font-size: 15px;      /* same as the keywords */
   font-weight: normal;
   line-height: 1.35;
   opacity: 0.55;          /* same gray as the rest of the portfolio */
 }
-
+.column.third .desc-label {
+  padding: 0;
+  border: none;
+  background: none;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
 .column.third .desc-label + p {
+  margin-top: 3px;
   margin-bottom: 0;       /* label and text stay together */
 }
 
