@@ -1804,3 +1804,8 @@ body.project-open .project-topbar .back-button {
     right: 6px;
   }
 }
+/* Lists under a description label (e.g. Scope): lines sit tight together,
+   only the last line keeps space below it */
+.column.third .desc-label ~ p:has(+ p) {
+  margin-bottom: 0;
+}
